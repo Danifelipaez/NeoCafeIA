@@ -37,18 +37,20 @@ Chatbot inteligente para cafeterías con arquitectura hexagonal simplificada, Fa
 
 ### Configuración
 
-1. **Crea un archivo `.env`** en la raíz del proyecto:
+1. **Crea un archivo `.env`** basado en el template:
    ```bash
-   # Crea el archivo .env con tus API keys
+   cp .env.example .env
    ```
 
-2. **Edita el archivo `.env`** y añade tus API keys:
+2. **Edita el archivo `.env`** y añade tus API keys reales:
+   ```bash
+   # Edita .env y reemplaza los valores de ejemplo con tus claves reales
+   GOOGLE_API_KEY=tu_clave_real_de_google_gemini
+   OPENAI_API_KEY=tu_clave_real_de_openai
+   # etc.
    ```
-   GOOGLE_API_KEY=tu_google_api_key_aqui
-   OPENAI_API_KEY=tu_openai_api_key_aqui
-   ANTHROPIC_API_KEY=tu_anthropic_api_key_aqui
-   DEEPSEEK_API_KEY=tu_deepseek_api_key_aqui
-   ```
+
+   **⚠️ Importante:** Nunca subas el archivo `.env` al repositorio. Está incluido en `.gitignore` para mantener tus claves seguras.
 
 ### Ejecución
 
@@ -69,6 +71,8 @@ NeoCafeIA/
 ├── app.py                 # Entrypoint de la aplicación FastAPI
 ├── codigo.py              # Código adicional
 ├── README.md              # Este archivo
+├── .env.example           # Template de variables de entorno
+├── .gitignore             # Archivos a ignorar en git
 ├── .env                   # Variables de entorno (crear basado en ejemplo)
 ├── main/                  # Paquete principal
 │   ├── __init__.py
