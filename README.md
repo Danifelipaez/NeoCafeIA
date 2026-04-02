@@ -1,6 +1,6 @@
-# Cafetería Selecto Granos - Chat IA
+# NeoCafeIA - Asistente de IA para Cafetería
 
-Chatbot inteligente para la Cafetería Selecto Granos con arquitectura hexagonal simplificada, FastAPI como backend y modelos de IA (Gemini, OpenAI, Claude, DeepSeek, LangChain).
+Chatbot inteligente para cafeterías con arquitectura hexagonal simplificada, FastAPI como backend y múltiples modelos de IA (Gemini, OpenAI, Claude, DeepSeek, LangChain).
 
 ## 🚀 Inicio Rápido
 
@@ -12,7 +12,7 @@ Chatbot inteligente para la Cafetería Selecto Granos con arquitectura hexagonal
 
 1. **Navega al directorio del proyecto:**
    ```bash
-   cd proyecto-cafeteria-ai
+   cd NeoCafeIA
    ```
 
 2. **Crea un entorno virtual (opcional pero recomendado):**
@@ -32,19 +32,19 @@ Chatbot inteligente para la Cafetería Selecto Granos con arquitectura hexagonal
 
 4. **Instala las dependencias:**
    ```bash
-   pip install -r requirements.txt
+   pip install -r main/requirements.txt
    ```
 
 ### Configuración
 
-1. **Crea un archivo `.env`** en la raíz del proyecto basándote en `.env.example`:
+1. **Crea un archivo `.env`** en la raíz del proyecto:
    ```bash
-   cp .env.example .env
+   # Crea el archivo .env con tus API keys
    ```
 
 2. **Edita el archivo `.env`** y añade tus API keys:
    ```
-   GEMINI_API_KEY=tu_gemini_api_key_aqui
+   GOOGLE_API_KEY=tu_google_api_key_aqui
    OPENAI_API_KEY=tu_openai_api_key_aqui
    ANTHROPIC_API_KEY=tu_anthropic_api_key_aqui
    DEEPSEEK_API_KEY=tu_deepseek_api_key_aqui
@@ -54,7 +54,7 @@ Chatbot inteligente para la Cafetería Selecto Granos con arquitectura hexagonal
 
 1. **Inicia el servidor FastAPI:**
    ```bash
-   uvicorn main:app --reload
+   uvicorn app:app --reload
    ```
 
 2. **Accede a la aplicación:**
@@ -65,39 +65,52 @@ Chatbot inteligente para la Cafetería Selecto Granos con arquitectura hexagonal
 ## 📁 Estructura del Proyecto
 
 ```
-proyecto-cafeteria-ai/
-├── main.py                 # Entrypoint de la aplicación
-├── requirements.txt        # Dependencias del proyecto
-├── .env.example           # Template de variables de entorno
-├── vercel.json            # Configuración para despliegue Vercel
-├── system_prompt/         # Instrucciones del sistema (IA)
-│   └── asistente.md
-├── rules/                 # Reglas de comportamiento
-│   └── comportamiento.md
-├── knowledge/             # Base de conocimiento
-│   ├── negocio.md
-│   ├── menu.md
-│   ├── promociones.md
-│   └── recomendaciones.md
-└── src/                   # Código fuente
-    ├── domain/
-    │   └── schemas.py     # Modelos Pydantic
-    ├── services/
-    │   └── chat_service.py
-    └── infrastructure/
-        ├── model_factory.py
-        ├── gemini_adapter.py
-        ├── openai_adapter.py
-        ├── claude_adapter.py
-        ├── deepseek_adapter.py
-        ├── langchain_adapter.py
-        ├── context_loader.py
-        └── web_frontend.py
+NeoCafeIA/
+├── app.py                 # Entrypoint de la aplicación FastAPI
+├── codigo.py              # Código adicional
+├── README.md              # Este archivo
+├── .env                   # Variables de entorno (crear basado en ejemplo)
+├── main/                  # Paquete principal
+│   ├── __init__.py
+│   ├── requirements.txt   # Dependencias del proyecto
+│   ├── vercel.json        # Configuración para despliegue Vercel
+│   ├── knowledge/         # Base de conocimiento
+│   │   ├── bebidas.md
+│   │   ├── granos.md
+│   │   ├── menu.md
+│   │   ├── negocio.md
+│   │   ├── postres.md
+│   │   ├── promociones.md
+│   │   └── recomendaciones.md
+│   ├── rules/             # Reglas de comportamiento
+│   │   └── comportamiento.md
+│   ├── skills/            # Habilidades del asistente
+│   │   └── asistente-cafeteria.md
+│   ├── system_prompt/     # Instrucciones del sistema (IA)
+│   │   └── asistente.md
+│   └── src/               # Código fuente
+│       ├── domain/
+│       │   └── schemas.py # Modelos Pydantic
+│       ├── services/
+│       │   └── chat_service.py
+│       └── infrastructure/
+│           ├── model_factory.py
+│           ├── gemini_adapter.py
+│           ├── openai_adapter.py
+│           ├── claude_adapter.py
+│           ├── deepseek_adapter.py
+│           ├── langchain_adapter.py
+│           ├── context_loader.py
+│           └── web_frontend.py
 ```
 
 ## 🔌 Proveedores de IA Disponibles
 
 - **Gemini 2.5 Flash** (Recomendado - Gratuito)
+- **OpenAI** (GPT-4o Mini)
+- **Claude** (Anthropic)
+- **DeepSeek** (DeepSeek Chat)
+- **LangChain + Gemini** (Cadena LangChain)
 - **OpenAI** (GPT-4o Mini)
 - **Claude** (Anthropic)
 - **DeepSeek** (DeepSeek Chat)
@@ -150,39 +163,39 @@ Envía un mensaje y obtiene una respuesta del chatbot.
 ## 🛠️ Personalización
 
 ### Cambiar el System Prompt
-Edita el archivo `system_prompt/asistente.md` para cambiar las instrucciones base.
+Edita el archivo `main/system_prompt/asistente.md` para cambiar las instrucciones base.
 
 ### Agregar Nuevas Reglas
-Añade reglas adicionales en `rules/comportamiento.md`.
+Añade reglas adicionales en `main/rules/comportamiento.md`.
 
 ### Actualizar la Base de Conocimiento
-Modifica o crea nuevos archivos `.md` en la carpeta `knowledge/`.
+Modifica o crea nuevos archivos `.md` en la carpeta `main/knowledge/`.
 
 ### Soportar un nuevo Proveedor de IA
-1. Crea un nuevo archivo `src/infrastructure/nuevo_adapter.py`
+1. Crea un nuevo archivo `main/src/infrastructure/nuevo_adapter.py`
 2. Implementa la clase heredando de `IModelAdapter`
-3. Añade el adaptador al `AIModelFactory` en `model_factory.py`
-4. Agrega el proveedor al enum `AIProvider` en `domain/schemas.py`
+3. Añade el adaptador al `AIModelFactory` en `main/src/infrastructure/model_factory.py`
+4. Agrega el proveedor al enum `AIProvider` en `main/src/domain/schemas.py`
 
 ## 🚨 Solución de Problemas
 
 ### Error: "ModuleNotFoundError: No module named 'uvicorn'"
 Asegúrate de haber ejecutado:
 ```bash
-pip install -r requirements.txt
+pip install -r main/requirements.txt
 ```
 
-### Error: "GEMINI_API_KEY no está configurada"
+### Error: "GOOGLE_API_KEY no está configurada"
 Verifica que el archivo `.env` existe y contiene la clave API:
 ```bash
-GEMINI_API_KEY=tu_clave_aqui
+GOOGLE_API_KEY=tu_clave_aqui
 ```
 
 ### El servidor no inicia
 Intenta limpiar el caché:
 ```bash
 pip cache purge
-pip install -r requirements.txt --no-cache-dir
+pip install -r main/requirements.txt --no-cache-dir
 ```
 
 ## 🚀 Despliegue en Vercel
