@@ -1,0 +1,49 @@
+import os
+from typing import List, Optional, Tuple
+from google import genai
+from google.genai import types
+from .model_factory import IModelAdapter
+from ..domain.schemas import Message
+
+
+class GeminiAdapter(IModelAdapter):
+    MODEL: str = "models/gemini-2.5-flash"
+
+    def __init__(self) -> None:
+        api_key = os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            raise ValueError("GOOGLE_API_KEY no está configurada en las variables de entorno")
+        self._client = genai.Client(api_key=api_key)
+
+    def complete(self, system_prompt: str, user_message: str, history: Optional[List[Message]] = None) -> Tuple[str, Optional[int]]:
+        contents = []
+        if history:
+            for msg in history:
+                contents.append(
+                    types.Content(
+                        role=msg.role,
+                        parts=[types.Part.from_text(text=msg.content)]
+                    )
+                )
+        contents.append(
+            types.Content(
+                role="user",
+                parts=[types.Part.from_text(text=user_message)]
+            )
+        )
+
+        config = types.GenerateContentConfig(
+            system_instruction=system_prompt,
+            max_output_tokens=800,
+            temperature=0.3
+        )
+
+        try:
+            response = self._client.models.generate_content(
+                model=self.MODEL,
+                contents=contents,
+                config=config,
+            )
+            return response.text or "", None
+        except Exception as e:
+            raise RuntimeError(f"Error al generar contenido con Gemini: {e}")
