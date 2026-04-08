@@ -4,9 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
 import logging
 from dotenv import load_dotenv
-from main.src.domain.schemas import ChatRequest, ChatResponse
-from main.src.services.chat_service import ChatService
-from main.src.infrastructure.context_loader import ContextLoader
+from src.domain.schemas import ChatRequest, ChatResponse
+from src.services.chat_service import ChatService
+from src.infrastructure.context_loader import ContextLoader
 
 # Cargar variables de entorno
 load_dotenv()
