@@ -5,7 +5,7 @@ from typing import List
 class ContextLoader:
     @staticmethod
     def load_system_prompt() -> str:
-        path = Path("main/system_prompt/asistente.md")
+        path = Path("system_prompt/asistente.md")
         if not path.exists():
             return "Eres un asistente de cafetería."
         with open(path, "r", encoding="utf-8") as f:
@@ -13,7 +13,7 @@ class ContextLoader:
 
     @staticmethod
     def load_rules() -> str:
-        path = Path("main/rules/comportamiento.md")
+        path = Path("rules/comportamiento.md")
         if not path.exists():
             return ""
         with open(path, "r", encoding="utf-8") as f:
@@ -21,7 +21,7 @@ class ContextLoader:
 
     @staticmethod
     def load_knowledge_files() -> List[str]:
-        knowledge_dir = Path("main/knowledge")
+        knowledge_dir = Path("knowledge")
         if not knowledge_dir.exists():
             return []
         knowledge_files = list(knowledge_dir.glob("*.md"))

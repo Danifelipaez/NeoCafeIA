@@ -1,6 +1,6 @@
-from main.src.domain.schemas import ChatRequest, ChatResponse
-from main.src.infrastructure.model_factory import AIModelFactory
-from main.src.infrastructure.context_loader import ContextLoader
+from src.domain.schemas import ChatRequest, ChatResponse
+from src.infrastructure.model_factory import AIModelFactory
+from src.infrastructure.context_loader import ContextLoader
 from pathlib import Path
 import re
 
@@ -11,7 +11,7 @@ class ChatService:
         self.menu_prices, self.combo_prices = self._load_prices_from_menu()
 
     def _load_prices_from_menu(self):
-        menu_path = Path('main/knowledge/menu.md')
+        menu_path = Path('knowledge/menu.md')
         menu_prices = {}
         combo_prices = {}
 
