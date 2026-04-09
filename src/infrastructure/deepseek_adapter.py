@@ -2,6 +2,7 @@ import os
 from typing import List, Optional, Tuple
 from openai import OpenAI
 from .model_factory import IModelAdapter
+from .retry_handler import RetryConfig, call_with_retry
 from ..domain.schemas import Message
 
 
@@ -30,7 +31,7 @@ class DeepSeekAdapter(IModelAdapter):
                 messages.append({"role": self._normalize_role(msg.role), "content": msg.content})
         messages.append({"role": "user", "content": user_message})
 
-        try:
+        def _make_request():
             response = self._client.chat.completions.create(
                 model=self.MODEL,
                 messages=messages,
@@ -38,5 +39,8 @@ class DeepSeekAdapter(IModelAdapter):
                 temperature=0.3
             )
             return response.choices[0].message.content or "", response.usage.total_tokens if response.usage else None
+
+        try:
+            return call_with_retry(_make_request, RetryConfig(max_attempts=3, initial_delay=1.0))
         except Exception as e:
             raise RuntimeError(f"Error al generar contenido con DeepSeek: {e}")

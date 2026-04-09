@@ -3,6 +3,7 @@ from typing import List, Optional, Tuple
 from google import genai
 from google.genai import types
 from .model_factory import IModelAdapter
+from .retry_handler import RetryConfig, call_with_retry
 from ..domain.schemas import Message
 
 
@@ -49,12 +50,15 @@ class GeminiAdapter(IModelAdapter):
             temperature=0.3
         )
 
-        try:
+        def _make_request():
             response = self._client.models.generate_content(
                 model=self.MODEL,
                 contents=contents,
                 config=config,
             )
             return response.text or "", None
+
+        try:
+            return call_with_retry(_make_request, RetryConfig(max_attempts=3, initial_delay=1.0))
         except Exception as e:
             raise RuntimeError(f"Error al generar contenido con Gemini: {e}")

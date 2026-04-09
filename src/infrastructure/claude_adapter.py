@@ -2,6 +2,7 @@ import os
 from typing import List, Optional, Tuple
 from anthropic import Anthropic
 from .model_factory import IModelAdapter
+from .retry_handler import RetryConfig, call_with_retry
 from ..domain.schemas import Message
 
 
@@ -30,7 +31,7 @@ class ClaudeAdapter(IModelAdapter):
                 messages.append({"role": self._normalize_role(msg.role), "content": msg.content})
         messages.append({"role": "user", "content": user_message})
 
-        try:
+        def _make_request():
             response = self._client.messages.create(
                 model=self.MODEL,
                 system=system_prompt,
@@ -39,5 +40,8 @@ class ClaudeAdapter(IModelAdapter):
                 temperature=0.3
             )
             return response.content[0].text, response.usage.input_tokens + response.usage.output_tokens if response.usage else None
+
+        try:
+            return call_with_retry(_make_request, RetryConfig(max_attempts=3, initial_delay=1.0))
         except Exception as e:
             raise RuntimeError(f"Error al generar contenido con Claude: {e}")

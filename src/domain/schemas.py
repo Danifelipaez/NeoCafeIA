@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from enum import Enum
 from typing import List, Optional
 
@@ -17,7 +17,7 @@ class Message(BaseModel):
 
 
 class ChatRequest(BaseModel):
-    pregunta: str
+    pregunta: str = Field(..., max_length=1000, min_length=1)
     provider: AIProvider = AIProvider.GEMINI
     historial: List[Message] = []
 

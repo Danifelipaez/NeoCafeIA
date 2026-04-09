@@ -4,6 +4,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from .model_factory import IModelAdapter
+from .retry_handler import RetryConfig, call_with_retry
 from ..domain.schemas import Message
 
 
@@ -21,8 +22,11 @@ class LangChainAdapter(IModelAdapter):
         ])
         chain = prompt | self._llm | StrOutputParser()
 
-        try:
+        def _make_request():
             response = chain.invoke({"input": user_message})
             return response, None  # LangChain doesn't easily give token count
+
+        try:
+            return call_with_retry(_make_request, RetryConfig(max_attempts=3, initial_delay=1.0))
         except Exception as e:
             raise RuntimeError(f"Error al generar contenido con LangChain: {e}")
