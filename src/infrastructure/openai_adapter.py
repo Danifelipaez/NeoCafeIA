@@ -14,11 +14,20 @@ class OpenAIAdapter(IModelAdapter):
             raise ValueError("OPENAI_API_KEY no está configurada en las variables de entorno")
         self._client = OpenAI(api_key=api_key)
 
+    def _normalize_role(self, role: str) -> str:
+        """Normalize roles to OpenAI format (lowercase).
+        OpenAI expects: 'user', 'assistant', 'system'
+        """
+        role_lower = role.lower()
+        if role_lower in ['bot']:
+            return 'assistant'
+        return role_lower
+
     def complete(self, system_prompt: str, user_message: str, history: Optional[List[Message]] = None) -> Tuple[str, Optional[int]]:
         messages = [{"role": "system", "content": system_prompt}]
         if history:
             for msg in history:
-                messages.append({"role": msg.role, "content": msg.content})
+                messages.append({"role": self._normalize_role(msg.role), "content": msg.content})
         messages.append({"role": "user", "content": user_message})
 
         try:

@@ -15,13 +15,24 @@ class GeminiAdapter(IModelAdapter):
             raise ValueError("GOOGLE_API_KEY no está configurada en las variables de entorno")
         self._client = genai.Client(api_key=api_key)
 
+    def _normalize_role_for_gemini(self, role: str) -> str:
+        """Convert generic roles to Gemini-specific roles.
+        Gemini expects: 'user' -> 'USER', 'assistant' -> 'MODEL'
+        """
+        role_lower = role.lower()
+        if role_lower in ['user']:
+            return 'USER'
+        elif role_lower in ['assistant', 'bot']:
+            return 'MODEL'
+        return role
+
     def complete(self, system_prompt: str, user_message: str, history: Optional[List[Message]] = None) -> Tuple[str, Optional[int]]:
         contents = []
         if history:
             for msg in history:
                 contents.append(
                     types.Content(
-                        role=msg.role,
+                        role=self._normalize_role_for_gemini(msg.role),
                         parts=[types.Part.from_text(text=msg.content)]
                     )
                 )
