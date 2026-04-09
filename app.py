@@ -46,8 +46,24 @@ def health():
     return {"status": "ok"}
 
 @app.get("/", response_class=HTMLResponse)
-def ui():
-    """Servir HTML desde archivo estático"""
+def landing():
+    """Servir landing page desde archivo estático"""
+    html_file = Path(__file__).parent / "static" / "landing.html"
+    if html_file.exists():
+        with open(html_file, 'r', encoding='utf-8') as f:
+            return f.read()
+    return """
+    <!DOCTYPE html>
+    <html>
+    <body>
+    <h1>Error: Landing page not found</h1>
+    </body>
+    </html>
+    """
+
+@app.get("/app", response_class=HTMLResponse)
+def chat_ui():
+    """Servir interfaz de chat desde archivo estático"""
     html_file = Path(__file__).parent / "static" / "index.html"
     if html_file.exists():
         with open(html_file, 'r', encoding='utf-8') as f:
@@ -56,7 +72,7 @@ def ui():
     <!DOCTYPE html>
     <html>
     <body>
-    <h1>Error: HTML file not found</h1>
+    <h1>Error: Chat UI not found</h1>
     </body>
     </html>
     """
