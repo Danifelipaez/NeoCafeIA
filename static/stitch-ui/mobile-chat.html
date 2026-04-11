@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<title>Selecto Granos | Asistente Digital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#7d6255",
+                    "on-primary-container": "#ffe3d1",
+                    "tertiary-fixed-dim": "#e1c0b0",
+                    "background": "#fff8f0",
+                    "on-tertiary-fixed-variant": "#594236",
+                    "on-background": "#1e1b14",
+                    "surface-tint": "#805533",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#f4bb92",
+                    "on-secondary-container": "#5c6856",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#1e1b14",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#d9e7d0",
+                    "secondary-container": "#d9e7d0",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#bdcbb5",
+                    "surface-container-highest": "#e9e2d5",
+                    "outline-variant": "#d5c3b8",
+                    "primary-fixed": "#ffdcc5",
+                    "on-secondary": "#ffffff",
+                    "surface": "#fff8f0",
+                    "on-primary-fixed": "#301400",
+                    "surface-dim": "#e1d9cc",
+                    "secondary": "#566250",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffe2d5",
+                    "on-tertiary-fixed": "#29170e",
+                    "on-surface-variant": "#51443c",
+                    "on-secondary-fixed-variant": "#3e4a39",
+                    "primary": "#6f4627",
+                    "surface-container": "#f5ede0",
+                    "primary-container": "#8b5e3c",
+                    "surface-variant": "#e9e2d5",
+                    "on-primary-fixed-variant": "#653d1e",
+                    "surface-bright": "#fff8f0",
+                    "tertiary": "#634a3e",
+                    "surface-container-low": "#fbf3e6",
+                    "surface-container-high": "#efe7da",
+                    "on-secondary-fixed": "#141e10",
+                    "inverse-primary": "#f4bb92",
+                    "inverse-surface": "#343027",
+                    "inverse-on-surface": "#f8f0e3",
+                    "tertiary-fixed": "#ffdbcb",
+                    "error-container": "#ffdad6",
+                    "outline": "#83746b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .font-serif { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-abstract-sand {
+            background-color: #fbf3e6;
+            clip-path: circle(40% at 90% 10%);
+        }
+        .bg-abstract-rose {
+            background-color: #ffdbcb;
+            opacity: 0.4;
+            clip-path: ellipse(25% 40% at 10% 80%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen flex flex-col overflow-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-stone-950/70 backdrop-blur-2xl">
+<div class="flex justify-between items-center w-full px-5 py-4 max-w-7xl mx-auto">
+<a href="/stitch-ui/landing.html" class="text-lg font-serif italic text-primary hover:opacity-80">Selecto Granos</a>
+<a href="/stitch-ui/landing.html" class="bg-primary text-on-primary px-5 py-1.5 rounded-full font-label uppercase tracking-widest text-[10px] active:scale-95 transition-transform">Visitar</a>
+</div>
+</nav>
+<!-- Abstract Geometric Accents -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute inset-0 bg-abstract-sand"></div>
+<div class="absolute inset-0 bg-abstract-rose"></div>
+<div class="absolute top-1/4 right-[-10%] w-48 h-48 bg-tertiary-fixed-dim/15 rounded-full blur-3xl"></div>
+</div>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col pt-16 relative h-full">
+<!-- Scrollable Chat History -->
+<div id="chat-container" class="flex-grow overflow-y-auto px-6 pt-10 pb-56 custom-scrollbar" data-chat-container>
+<!-- Header Text -->
+<header class="mb-12">
+<span class="font-label text-[9px] uppercase tracking-[0.2em] text-tertiary mb-2 block opacity-80">Interacción Curada</span>
+<h1 class="font-headline text-3xl text-primary leading-tight">Asistente de Ritual</h1>
+</header>
+<!-- Messages Stack -->
+<div class="space-y-7">
+<!-- Los mensajes se cargarán dinámicamente aquí -->
+</div>
+</div>
+<!-- Sticky Bottom Interaction Area -->
+<div class="fixed bottom-0 left-0 w-full z-40 bg-gradient-to-t from-background via-background/98 to-transparent pt-16">
+<div class="max-w-4xl mx-auto px-6 safe-area-bottom pb-8">
+<!-- Horizontal Suggestion Chips -->
+<div class="flex gap-3 overflow-x-auto pb-5 -mx-6 px-6 no-scrollbar">
+<button class="flex-shrink-0 bg-surface-container-lowest px-5 py-2.5 rounded-full text-[10px] font-label uppercase tracking-wider text-primary whitespace-nowrap active:bg-primary active:text-on-primary transition-all" data-suggestion="Recomiéndame un café">
+                    Recomiéndame un café
+                </button>
+<button class="flex-shrink-0 bg-surface-container-lowest px-5 py-2.5 rounded-full text-[10px] font-label uppercase tracking-wider text-primary whitespace-nowrap active:bg-primary active:text-on-primary transition-all" data-suggestion="Ver el menú completo">
+                    Ver el menú
+                </button>
+<button class="flex-shrink-0 bg-surface-container-lowest px-5 py-2.5 rounded-full text-[10px] font-label uppercase tracking-wider text-primary whitespace-nowrap active:bg-primary active:text-on-primary transition-all" data-suggestion="¿Cuál es tu horario?">
+                    Horarios
+                </button>
+</div>
+<!-- Input Bar -->
+<div class="relative group mb-5">
+<input id="chat-input" class="w-full bg-surface-container-lowest py-5 px-8 pr-16 rounded-full focus:ring-2 focus:ring-primary/20 transition-all outline-none font-body text-sm text-on-surface placeholder:text-stone-400" placeholder="Tu consulta..." type="text"/>
+<button id="chat-send" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+</button>
+</div>
+</button>
+</div>
+
+                The Curated Ritual — IA de Selecto Granos
+            </p>
+</div>
+</div>
+</main>
+<footer class="sr-only">
+    © 2024 Cafetería Selecto Granos. The Curated Ritual.
+</footer>
+<!-- API Helper Infrastructure -->
+<script src="/static/stitch-ui/api-helper.js"></script>
+<!-- Chat Integration Script -->
+<script src="/static/stitch-ui/chat.js"></script>
+</body></html>

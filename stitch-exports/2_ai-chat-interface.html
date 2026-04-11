@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Selecto Granos | Asistente Digital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#7d6255",
+                    "on-primary-container": "#ffe3d1",
+                    "tertiary-fixed-dim": "#e1c0b0",
+                    "background": "#fff8f0",
+                    "on-tertiary-fixed-variant": "#594236",
+                    "on-background": "#1e1b14",
+                    "surface-tint": "#805533",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#f4bb92",
+                    "on-secondary-container": "#5c6856",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#1e1b14",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#d9e7d0",
+                    "secondary-container": "#d9e7d0",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#bdcbb5",
+                    "surface-container-highest": "#e9e2d5",
+                    "outline-variant": "#d5c3b8",
+                    "primary-fixed": "#ffdcc5",
+                    "on-secondary": "#ffffff",
+                    "surface": "#fff8f0",
+                    "on-primary-fixed": "#301400",
+                    "surface-dim": "#e1d9cc",
+                    "secondary": "#566250",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffe2d5",
+                    "on-tertiary-fixed": "#29170e",
+                    "on-surface-variant": "#51443c",
+                    "on-secondary-fixed-variant": "#3e4a39",
+                    "primary": "#6f4627",
+                    "surface-container": "#f5ede0",
+                    "primary-container": "#8b5e3c",
+                    "surface-variant": "#e9e2d5",
+                    "on-primary-fixed-variant": "#653d1e",
+                    "surface-bright": "#fff8f0",
+                    "tertiary": "#634a3e",
+                    "surface-container-low": "#fbf3e6",
+                    "surface-container-high": "#efe7da",
+                    "on-secondary-fixed": "#141e10",
+                    "inverse-primary": "#f4bb92",
+                    "inverse-surface": "#343027",
+                    "inverse-on-surface": "#f8f0e3",
+                    "tertiary-fixed": "#ffdbcb",
+                    "error-container": "#ffdad6",
+                    "outline": "#83746b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .font-serif { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-abstract-sand {
+            background-color: #fbf3e6;
+            clip-path: circle(40% at 90% 10%);
+        }
+        .bg-abstract-rose {
+            background-color: #ffdbcb;
+            opacity: 0.4;
+            clip-path: ellipse(25% 40% at 10% 80%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-[0_0_40px_rgba(30,27,20,0.15)]">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
+<div class="text-xl font-serif italic text-[#6F4627] dark:text-[#D4A373]">Selecto Granos</div>
+<div class="hidden md:flex gap-10 items-center">
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="#">Menu</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="#">Curated Beans</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="#">The Roastery</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="#">Journal</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-2 rounded-full font-label uppercase tracking-widest text-xs active:scale-95 transition-transform">Visit</button>
+</div>
+</nav>
+<!-- Abstract Geometric Accents -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute inset-0 bg-abstract-sand"></div>
+<div class="absolute inset-0 bg-abstract-rose"></div>
+<div class="absolute top-1/4 right-[-5%] w-64 h-64 bg-tertiary-fixed-dim/20 rounded-full blur-3xl"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col pt-24 pb-32 max-w-4xl mx-auto w-full px-6 relative">
+<!-- Header Text -->
+<header class="mb-12 mt-8">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-tertiary mb-2 block">Interacción Curada</span>
+<h1 class="font-headline text-4xl md:text-5xl text-primary leading-tight">Asistente de Ritual</h1>
+</header>
+<!-- Chat Container -->
+<div class="flex-grow overflow-y-auto space-y-8 pr-4 custom-scrollbar">
+<!-- AI Message -->
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="bg-surface-container-low border border-outline-variant/15 p-6 rounded-lg rounded-tl-none shadow-sm">
+<p class="font-headline text-primary text-lg md:text-xl leading-relaxed italic">
+                        Hola, soy tu asistente de Selecto Granos. ¿En qué puedo ayudarte hoy con tu ritual del café?
+                    </p>
+</div>
+<span class="font-label text-[9px] uppercase tracking-widest text-stone-400 mt-2 ml-1">Asistente Virtual</span>
+</div>
+<!-- User Message Example (Hidden or visual guide) -->
+<!-- 
+            <div class="flex flex-col items-end max-w-[85%] self-end">
+                <div class="bg-secondary p-6 rounded-lg rounded-tr-none shadow-sm">
+                    <p class="font-body text-on-secondary text-base leading-relaxed">
+                        Me gustaría conocer las variedades de origen único disponibles hoy.
+                    </p>
+                </div>
+                <span class="font-label text-[9px] uppercase tracking-widest text-stone-400 mt-2 mr-1">Tú</span>
+            </div>
+            -->
+</div>
+<!-- Sticky Bottom Area -->
+<div class="fixed bottom-0 left-0 w-full bg-gradient-to-t from-background via-background/95 to-transparent pb-10 pt-16">
+<div class="max-w-4xl mx-auto px-6">
+<!-- Suggestions -->
+<div class="flex flex-wrap gap-3 mb-6 justify-center">
+<button class="bg-surface-container-lowest border border-outline-variant/20 px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-primary hover:text-on-primary transition-all duration-300">
+                        Recomiéndame un café
+                    </button>
+<button class="bg-surface-container-lowest border border-outline-variant/20 px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-primary hover:text-on-primary transition-all duration-300">
+                        Ver el menú
+                    </button>
+<button class="bg-surface-container-lowest border border-outline-variant/20 px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-primary hover:text-on-primary transition-all duration-300">
+                        Horarios de hoy
+                    </button>
+</div>
+<!-- Input Area -->
+<div class="relative group">
+<input class="w-full bg-surface-container-lowest border-none border-b border-outline-variant/15 py-5 px-8 rounded-full shadow-[0_10px_30px_rgba(30,27,20,0.05)] focus:ring-1 focus:ring-primary/20 focus:border-primary transition-all outline-none font-body text-on-surface placeholder:text-stone-400" placeholder="Escribe tu consulta aquí..." type="text"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+</button>
+</div>
+<p class="text-center text-[10px] text-stone-400 font-label uppercase tracking-widest mt-6 opacity-60">
+                    The Curated Ritual — IA de Selecto Granos
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer - Suppressed for focused chat interface as per Shell Visibility rules, but kept minimal metadata -->
+<footer class="sr-only">
+        © 2024 Cafetería Selecto Granos. The Curated Ritual.
+    </footer>
+</body></html>
