@@ -289,9 +289,10 @@ class ChatUIManager {
 
     scrollToBottom() {
         if (this.container) {
-            setTimeout(() => {
+            // Usar requestAnimationFrame para asegurar que el DOM esté completamente renderizado
+            requestAnimationFrame(() => {
                 this.container.scrollTop = this.container.scrollHeight;
-            }, 0);
+            });
         }
     }
 

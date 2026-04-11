@@ -91,20 +91,33 @@
             opacity: 0.4;
             clip-path: ellipse(25% 40% at 10% 80%);
         }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
-<body class="bg-background text-on-background min-h-screen flex flex-col overflow-hidden">
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-auto">
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-2xl">
 <div class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
-<a href="/stitch-ui/landing.html" class="text-xl font-serif italic text-[#6F4627] dark:text-[#D4A373] hover:opacity-80 transition-opacity">Selecto Granos</a>
+<a href="/" class="text-xl font-serif italic text-[#6F4627] dark:text-[#D4A373] hover:opacity-80 transition-opacity">Selecto Granos</a>
 <div class="hidden md:flex gap-10 items-center">
-<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/stitch-ui/landing.html#menu">Menu</a>
-<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/stitch-ui/landing.html">Curated Beans</a>
-<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/stitch-ui/landing.html">The Roastery</a>
-<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/stitch-ui/landing.html">Journal</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/#menu">Menu</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/">Curated Beans</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/">The Roastery</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/">Journal</a>
 </div>
-<a href="/stitch-ui/landing.html" class="bg-primary text-on-primary px-8 py-2 rounded-full font-label uppercase tracking-widest text-xs active:scale-95 transition-transform">Inicio</a>
+<a href="/" class="bg-primary text-on-primary px-8 py-2 rounded-full font-label uppercase tracking-widest text-xs active:scale-95 transition-transform hover:opacity-90">Inicio</a>
 </div>
 </nav>
 <!-- Abstract Geometric Accents -->
@@ -114,46 +127,43 @@
 <div class="absolute top-1/4 right-[-5%] w-64 h-64 bg-tertiary-fixed-dim/20 rounded-full blur-3xl"></div>
 </div>
 <!-- Main Content Canvas -->
-<main class="flex-grow flex flex-col pt-24 pb-36 max-w-4xl mx-auto w-full px-8 relative">
+<main class="pt-24 pb-96">
+<div class="max-w-4xl mx-auto w-full px-8 relative">
 <!-- Header Text -->
-<header class="mb-16 mt-12">
-<span class="font-label text-[10px] uppercase tracking-[0.3em] text-tertiary mb-3 block">Interacción Curada</span>
-<h1 class="font-headline text-5xl md:text-6xl text-primary leading-tight">Asistente de Ritual</h1>
+<header class="mb-10 mt-6">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-tertiary mb-2 block">Interacción Curada</span>
+<h1 class="font-headline text-4xl md:text-5xl text-primary leading-tight">Asistente de Ritual</h1>
 </header>
 <!-- Chat Container -->
-<div id="chat-container" class="flex-grow overflow-y-auto space-y-10 pr-4 custom-scrollbar" data-chat-container>
+<div id="chat-container" class="space-y-6 pr-4" data-chat-container>
 <!-- Los mensajes se agregarán dinámicamente aquí -->
 </div>
-<!-- Sticky Bottom Area -->
-<div class="fixed bottom-0 left-0 w-full bg-gradient-to-t from-background via-background/98 to-transparent pb-12 pt-20">
-<div class="max-w-4xl mx-auto px-8">
+</div>
+</main>
+<!-- Footer with Input (Fixed) -->
+<footer class="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-background via-background/95 to-transparent pt-8 pb-8">
+<div class="max-w-4xl mx-auto w-full px-8">
 <!-- Suggestions -->
-<div class="flex flex-wrap gap-4 mb-8 justify-center">
-<button class="bg-surface-container-lowest px-6 py-3 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-surface-container-low transition-all duration-300" data-suggestion="Recomiéndame un café">
+<div class="flex flex-wrap gap-3 mb-6 justify-center">
+<button class="bg-surface-container-lowest px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-surface-container-low transition-all duration-300" data-suggestion="Recomiéndame un café">
                         Recomiéndame un café
                     </button>
-<button class="bg-surface-container-lowest px-6 py-3 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-surface-container-low transition-all duration-300" data-suggestion="Ver el menú completo">
+<button class="bg-surface-container-lowest px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-surface-container-low transition-all duration-300" data-suggestion="Ver el menú completo">
                         Ver el menú
                     </button>
-<button class="bg-surface-container-lowest px-6 py-3 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-surface-container-low transition-all duration-300" data-suggestion="¿Cuál es tu horario de hoy?">
+<button class="bg-surface-container-lowest px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-surface-container-low transition-all duration-300" data-suggestion="¿Cuál es tu horario de hoy?">
                         Horarios de hoy
                     </button>
 </div>
 <!-- Input Area -->
 <div class="relative group">
-<input id="chat-input" class="w-full bg-surface-container-lowest py-6 px-10 rounded-full focus:ring-2 focus:ring-primary/30 transition-all outline-none font-body text-on-surface placeholder:text-stone-400" placeholder="Escribe tu consulta aquí..." type="text"/>
-<button id="chat-send" class="absolute right-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center active:scale-90 transition-transform">
+<input id="chat-input" class="w-full bg-surface-container-lowest py-4 px-8 rounded-full focus:ring-2 focus:ring-primary/30 transition-all outline-none font-body text-on-surface placeholder:text-stone-400" placeholder="Escribe tu consulta aquí..." type="text"/>
+<button id="chat-send" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-primary text-on-primary rounded-full flex items-center justify-center active:scale-90 transition-transform">
 <span class="material-symbols-outlined text-sm">arrow_upward</span>
 </button>
 </div>
-<p class="text-center text-[10px] text-stone-400 font-label uppercase tracking-widest mt-6 opacity-60">
 </div>
-</div>
-</main>
-<!-- Footer -->
-<footer class="sr-only">
-        © 2024 Cafetería Selecto Granos. The Curated Ritual.
-    </footer>
+</footer>
 <!-- API Helper Infrastructure -->
 <script src="/static/stitch-ui/api-helper.js"></script>
 <!-- Chat Integration Script -->
