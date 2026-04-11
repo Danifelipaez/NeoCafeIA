@@ -115,10 +115,26 @@ NeoCafeIA/
 - **Claude** (Anthropic)
 - **DeepSeek** (DeepSeek Chat)
 - **LangChain + Gemini** (Cadena LangChain)
-- **OpenAI** (GPT-4o Mini)
-- **Claude** (Anthropic)
-- **DeepSeek** (DeepSeek Chat)
-- **LangChain + Gemini** (Cadena LangChain)
+
+## 🤖 Servidor MCP (Model Context Protocol)
+
+NeoCafeIA incluye un servidor MCP para integración avanzada con herramientas de IA.
+
+### Características del Servidor MCP
+
+- **Búsqueda de bebidas** — Información detallada de cada bebida del menú
+- **Listado de menú completo** — Bebidas, postres y promociones
+- **Recomendaciones personalizadas** — Basadas en preferencias del usuario
+- **Consulta de granos** — Información de granos de café disponibles
+- **Verificación de promociones** — Promociones activas del día
+
+### Ejecución del Servidor MCP
+
+```bash
+python servidor_mcp.py
+```
+
+El servidor expone herramientas que pueden ser utilizadas por clientes MCP para consultas especializadas sobre el catálogo de NeoCafeía.
 
 ## 📝 Endpoints de la API
 
