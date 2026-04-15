@@ -1,0 +1,6 @@
+{
+  "allow_read": ["src/", "knowledge/", "rules/", "system_prompt/"],
+  "allow_write": ["src/", "static/", "tests/"],
+  "deny_write": [".env", ".env.example", "knowledge/"],
+  "deny_commands": ["rm -rf", "DROP TABLE", "git push --force"]
+}
