@@ -162,34 +162,34 @@ def get_recommendations(preference: str = None):
         # Aquí se podría integrar lógica más compleja
         recommendations = {
             "suave": {
-                "titulo": "Etiopía Sidamo",
-                "descripcion": "Notas suaves, cítricas y de jazmín. Ideal para quien busca delicadeza.",
-                "precio": 4.50,
-                "origen": "Etiopía"
+                "titulo": "Cappuccino",
+                "descripcion": "Espuma cremosa y equilibrio perfecto.",
+                "precio": 3.50,
+                "origen": "Blend"
             },
             "fuerte": {
-                "titulo": "Geisha Reserve",
-                "descripcion": "Sabor intenso y complejo. El pináculo del café de especialidad.",
-                "precio": 12.00,
-                "origen": "Panamá"
+                "titulo": "Espresso",
+                "descripcion": "Concentrado intenso y puro, para quienes buscan fuerza.",
+                "precio": 2.00,
+                "origen": "Colombia"
             },
             "cremoso": {
-                "titulo": "Flat White AI",
-                "descripcion": "Textura perfecta con leche vaporizada. Ideal para quienes aman la cremosidad.",
-                "precio": 5.25,
+                "titulo": "Latte",
+                "descripcion": "Suave, lácteo y sedoso, ideal para un momento de calma.",
+                "precio": 3.50,
                 "origen": "Blend"
             },
             "refrescante": {
-                "titulo": "Cold Brew Selecto",
-                "descripcion": "18 horas de infusión lenta. Perfecto para días calurosos.",
-                "precio": 6.00,
-                "origen": "Blend Premium"
+                "titulo": "Iced Coffee",
+                "descripcion": "Café frío con hielo, ligero y refrescante.",
+                "precio": 4.00,
+                "origen": "Blend Frío"
             },
             "dulce": {
-                "titulo": "V60 Especial",
-                "descripcion": "Notas dulces naturales. Pureza máxima en cada filtrado.",
-                "precio": 5.50,
-                "origen": "Colombia"
+                "titulo": "Mocha",
+                "descripcion": "Chocolate y espresso en armónico equilibrio.",
+                "precio": 5.00,
+                "origen": "Chocolate"
             }
         }
         

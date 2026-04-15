@@ -69,7 +69,7 @@ Envía un mensaje al asistente IA.
 **Respuesta:**
 ```json
 {
-  "respuesta": "Te recomendaría nuestro Etiopía Sidamo...",
+  "respuesta": "Te recomendaría nuestro Cappuccino...",
   "provider": "gemini",
   "tokens_usados": 125
 }
@@ -94,12 +94,15 @@ Obtiene todo el menú con precios.
   "status": "ok",
   "content": "# Menú Completo...",
   "items": {
-    "etiopía sidamo": 4.50,
-    "flat white ai": 5.25,
-    "cold brew selecto": 6.00
+    "espresso": 2.00,
+    "americano": 2.50,
+    "cappuccino": 3.50,
+    "latte": 3.50,
+    "mocha": 5.00,
+    "cold brew": 4.50
   },
   "combos": {
-    "combo matutino": 12.50
+    "combo mañanero": 3.00
   }
 }
 ```
@@ -118,10 +121,10 @@ Obtiene recomendaciones personalizadas.
 {
   "status": "ok",
   "recomendacion": {
-    "titulo": "Etiopía Sidamo",
-    "descripcion": "Notas suaves, cítricas y de jazmín...",
-    "precio": 4.50,
-    "origen": "Etiopía"
+    "titulo": "Cappuccino",
+    "descripcion": "Espuma cremosa y equilibrada, ideal para un momento suave.",
+    "precio": 3.50,
+    "origen": "Blend"
   }
 }
 ```

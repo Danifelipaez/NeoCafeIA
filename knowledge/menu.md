@@ -3,7 +3,7 @@ MENÚ Y PRECIOS:
 ## Cafés Calientes
 1. Café Espresso: $2.00
 2. Café Americano: $2.50
-3. Capuchino: $3.50
+3. Cappuccino: $3.50
 4. Latte: $3.50
 5. Mocha: $5.00
 

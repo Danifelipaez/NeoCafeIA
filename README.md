@@ -32,7 +32,7 @@ Chatbot inteligente para cafeterías con arquitectura hexagonal simplificada, Fa
 
 4. **Instala las dependencias:**
    ```bash
-   pip install -r main/requirements.txt
+   pip install -r requirements.txt
    ```
 
 ### Configuración
@@ -60,7 +60,8 @@ Chatbot inteligente para cafeterías con arquitectura hexagonal simplificada, Fa
    ```
 
 2. **Accede a la aplicación:**
-   - **Chat Web:** http://localhost:8000/webchat
+   - **Chat Web:** http://localhost:8000/app
+   - **Landing y Stitch UI:** http://localhost:8000/stitch-ui
    - **Documentación API:** http://localhost:8000/docs
    - **Health Check:** http://localhost:8000/health
 
@@ -69,43 +70,42 @@ Chatbot inteligente para cafeterías con arquitectura hexagonal simplificada, Fa
 ```
 NeoCafeIA/
 ├── app.py                 # Entrypoint de la aplicación FastAPI
-├── codigo.py              # Código adicional
 ├── README.md              # Este archivo
+├── SECURITY.md            # Política de seguridad del proyecto
 ├── .env.example           # Template de variables de entorno
 ├── .gitignore             # Archivos a ignorar en git
-├── .env                   # Variables de entorno (crear basado en ejemplo)
-├── main/                  # Paquete principal
-│   ├── __init__.py
-│   ├── requirements.txt   # Dependencias del proyecto
-│   ├── vercel.json        # Configuración para despliegue Vercel
-│   ├── knowledge/         # Base de conocimiento
-│   │   ├── bebidas.md
-│   │   ├── granos.md
-│   │   ├── menu.md
-│   │   ├── negocio.md
-│   │   ├── postres.md
-│   │   ├── promociones.md
-│   │   └── recomendaciones.md
-│   ├── rules/             # Reglas de comportamiento
-│   │   └── comportamiento.md
-│   ├── skills/            # Habilidades del asistente
-│   │   └── asistente-cafeteria.md
-│   ├── system_prompt/     # Instrucciones del sistema (IA)
-│   │   └── asistente.md
-│   └── src/               # Código fuente
-│       ├── domain/
-│       │   └── schemas.py # Modelos Pydantic
-│       ├── services/
-│       │   └── chat_service.py
-│       └── infrastructure/
-│           ├── model_factory.py
-│           ├── gemini_adapter.py
-│           ├── openai_adapter.py
-│           ├── claude_adapter.py
-│           ├── deepseek_adapter.py
-│           ├── langchain_adapter.py
-│           ├── context_loader.py
-│           └── web_frontend.py
+├── requirements.txt       # Dependencias del proyecto
+├── servidor_mcp.py        # Servidor MCP para herramientas y consultas
+├── knowledge/             # Base de conocimiento
+│   ├── bebidas.md
+│   ├── granos.md
+│   ├── menu.md
+│   ├── negocio.md
+│   ├── postres.md
+│   ├── promociones.md
+│   └── recomendaciones.md
+├── rules/                 # Reglas de comportamiento
+│   └── comportamiento.md
+├── skills/                # Habilidades del asistente
+│   └── asistente-cafeteria.md
+├── system_prompt/         # Instrucciones del sistema (IA)
+│   └── asistente.md
+├── src/                   # Código fuente
+│   ├── domain/
+│   │   └── schemas.py
+│   ├── services/
+│   │   └── chat_service.py
+│   └── infrastructure/
+│       ├── model_factory.py
+│       ├── gemini_adapter.py
+│       ├── openai_adapter.py
+│       ├── claude_adapter.py
+│       ├── deepseek_adapter.py
+│       ├── langchain_adapter.py
+│       ├── context_loader.py
+│       └── web_frontend.py
+├── static/                # Frontend estático
+│   └── stitch-ui/
 ```
 
 ## 🔌 Proveedores de IA Disponibles
@@ -148,7 +148,7 @@ Verifica el estado del servidor.
 }
 ```
 
-### GET `/webchat`
+### GET `/app`
 Devuelve la interfaz web interactiva del chat.
 
 ### POST `/chat`
@@ -166,7 +166,7 @@ Envía un mensaje y obtiene una respuesta del chatbot.
 **Response:**
 ```json
 {
-  "respuesta": "En la Cafetería Aroma & Código tenemos...",
+  "respuesta": "En Selecto Granos tenemos...",
   "provider": "gemini",
   "tokens_usados": null
 }
@@ -174,7 +174,7 @@ Envía un mensaje y obtiene una respuesta del chatbot.
 
 ## 🎯 Cómo Usar el Webchat
 
-1. Accede a http://localhost:8000/webchat
+1. Accede a http://localhost:8000/app
 2. Selecciona el proveedor de IA en el dropdown
 3. Escribe tu pregunta en el campo de texto
 4. Presiona "Enviar" o Enter
@@ -183,26 +183,26 @@ Envía un mensaje y obtiene una respuesta del chatbot.
 ## 🛠️ Personalización
 
 ### Cambiar el System Prompt
-Edita el archivo `main/system_prompt/asistente.md` para cambiar las instrucciones base.
+Edita el archivo `system_prompt/asistente.md` para cambiar las instrucciones base.
 
 ### Agregar Nuevas Reglas
-Añade reglas adicionales en `main/rules/comportamiento.md`.
+Añade reglas adicionales en `rules/comportamiento.md`.
 
 ### Actualizar la Base de Conocimiento
-Modifica o crea nuevos archivos `.md` en la carpeta `main/knowledge/`.
+Modifica o crea nuevos archivos `.md` en la carpeta `knowledge/`.
 
 ### Soportar un nuevo Proveedor de IA
-1. Crea un nuevo archivo `main/src/infrastructure/nuevo_adapter.py`
+1. Crea un nuevo archivo `src/infrastructure/nuevo_adapter.py`
 2. Implementa la clase heredando de `IModelAdapter`
-3. Añade el adaptador al `AIModelFactory` en `main/src/infrastructure/model_factory.py`
-4. Agrega el proveedor al enum `AIProvider` en `main/src/domain/schemas.py`
+3. Añade el adaptador al `AIModelFactory` en `src/infrastructure/model_factory.py`
+4. Agrega el proveedor al enum `AIProvider` en `src/domain/schemas.py`
 
 ## 🚨 Solución de Problemas
 
 ### Error: "ModuleNotFoundError: No module named 'uvicorn'"
 Asegúrate de haber ejecutado:
 ```bash
-pip install -r main/requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Error: "GOOGLE_API_KEY no está configurada"
@@ -215,7 +215,7 @@ GOOGLE_API_KEY=tu_clave_aqui
 Intenta limpiar el caché:
 ```bash
 pip cache purge
-pip install -r main/requirements.txt --no-cache-dir
+pip install -r requirements.txt --no-cache-dir
 ```
 
 ## 🚀 Despliegue en Vercel

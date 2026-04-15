@@ -13,12 +13,12 @@
 - **Recomendación**: Para quienes prefieren café negro ligero.
 
 ### Cappuccino
-- **Precio**: $4.50
+- **Precio**: $3.50
 - **Descripción**: Espresso con leche vaporizada y espuma.
 - **Recomendación**: Cremoso y equilibrado.
 
 ### Latte
-- **Precio**: $4.50
+- **Precio**: $3.50
 - **Descripción**: Espresso con leche al vapor.
 - **Recomendación**: Suave y lácteo.
 

@@ -12,12 +12,12 @@ def buscar_bebida(nombre: str) -> str:
     Retorna descripción, precio y recomendaciones de preparación.
     """
     bebidas = {
-        "espresso":     "Espresso   — $2.500 — Café concentrado intenso — Grano premium",
-        "cappuccino":   "Cappuccino — $4.000 — Espresso + leche vaporizada — Cremoso y suave",
-        "latte":        "Latte      — $4.500 — Espresso + mucha leche — Suave y reconfortante",
-        "americano":    "Americano  — $3.000 — Espresso + agua caliente — Clásico y fuerte",
-        "macchiato":    "Macchiato  — $3.500 — Espresso + poco vapor — Equilibrado",
-        "mocca":        "Moca       — $5.000 — Espresso + chocolate + leche — Delicioso",
+        "espresso":     "Espresso   — $2.00 — Café concentrado intenso — Grano premium",
+        "cappuccino":   "Cappuccino — $3.50 — Espresso + leche vaporizada — Cremoso y suave",
+        "latte":        "Latte      — $3.50 — Espresso + mucha leche — Suave y reconfortante",
+        "americano":    "Americano  — $2.50 — Espresso + agua caliente — Clásico y fuerte",
+        "macchiato":    "Macchiato  — $3.50 — Espresso + poco vapor — Equilibrado",
+        "mocha":        "Mocha      — $5.00 — Espresso + chocolate + leche — Delicioso",
     }
     resultado = bebidas.get(nombre.lower(), f"'{nombre}' no disponible en nuestro menú")
     return resultado
@@ -31,22 +31,22 @@ def listar_menu() -> str:
     return """═══ MENÚ NEOCAFEÍA ═══
     
 ☕ BEBIDAS CON ESPRESSO:
-    • Espresso      — $2.500
-    • Americano     — $3.000
-    • Macchiato     — $3.500
-    • Cappuccino    — $4.000
-    • Latte         — $4.500
-    • Moca          — $5.000
+    • Espresso      — $2.00
+    • Americano     — $2.50
+    • Macchiato     — $3.50
+    • Cappuccino    — $3.50
+    • Latte         — $3.50
+    • Mocha          — $5.00
 
 🍰 POSTRES FRESCOS:
-    • Brownie de chocolate    — $3.500
-    • Cheesecake frutal       — $4.000
-    • Croissant relleno       — $2.500
-    • Galletas artesanales    — $1.500 / 3 unidades
+    • Brownie de chocolate    — $4.00
+    • Cheesecake frutal       — $4.50
+    • Croissant relleno       — $3.50
+    • Galletas artesanales    — $1.50 / 3 unidades
 
 🌟 PROMOCIONES ESPECIALES:
-    • Combo Mañana: Espresso + Croissant — $4.500 (-$1.500)
-    • Happy Hour: 2 bebidas por $7.000 (5-7 PM)
+    • Combo Mañana: Espresso + Croissant — $4.00 (-$1.50)
+    • Happy Hour: 2 bebidas por $6.50 (5-7 PM)
     • Estudiante: -20% con carnet"""
 
 
@@ -59,9 +59,9 @@ def obtener_recomendacion(preferencia: str) -> str:
     recomendaciones = {
         "suave":       "Te recomendamos un Latte o Cappuccino — perfectos para disfrutar sin intensidad",
         "fuerte":      "Un Espresso o Americano es lo tuyo — café puro y con carácter",
-        "cremoso":     "Prueba nuestro Cappuccino o Moca — cremosidad en cada sorbo",
+        "cremoso":     "Prueba nuestro Cappuccino o Mocha — cremosidad en cada sorbo",
         "refrescante": "Iced Americano o Iced Cappuccino — ideal para estos días",
-        "dulce":       "Moca con extra chocolate o Latte con caramelo — indulgencia pura",
+        "dulce":       "Mocha con extra chocolate o Latte con caramelo — indulgencia pura",
     }
     resultado = recomendaciones.get(preferencia.lower(), 
                                    "Cuéntanos tu preferencia: suave, fuerte, cremoso, refrescante o dulce")
@@ -99,7 +99,7 @@ def verificar_promocion_activa() -> str:
     return """🎉 PROMOCIONES ACTIVAS HOY:
 
 ✅ HAPPY HOUR (5:00 PM - 7:00 PM)
-   Dos bebidas por $7.000 (ahorro de hasta $3.500)
+   Dos bebidas por $6.50 (ahorro de hasta $1.50)
 
 ✅ VIERNES GOURMET
    Todos los mochas con chocolatería artesanal -30%
@@ -108,7 +108,7 @@ def verificar_promocion_activa() -> str:
    Cada 5 bebidas, la 6ª a mitad de precio
 
 ✅ COMBO ESTUDIANTE
-   Bebida + Postre por $6.500 (presentar carnet)"""
+   Bebida + Postre por $6.50 (presentar carnet)"""
 
 
 # 3. Punto de entrada para Vercel

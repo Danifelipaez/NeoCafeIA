@@ -2,8 +2,8 @@
 
 ## Pasteles y Dulces
 
-### Torta de Chocolate
-- **Precio**: $4.00
+### Pastel de chocolate
+- **Precio**: $3.00
 - **Descripción**: Bizcocho de chocolate con ganache.
 - **Recomendación**: Combina perfecto con cappuccino.
 
@@ -20,7 +20,7 @@
 ## Galletas y Snacks
 
 ### Galleta de Avena
-- **Precio**: $2.00
+- **Precio**: $1.50
 - **Descripción**: Casera con chips de chocolate.
 - **Recomendación**: Saludable y deliciosa.
 
@@ -31,6 +31,6 @@
 
 ## Combinaciones Recomendadas
 
-- **Dulce**: Torta de chocolate + Cappuccino ($8.50)
-- **Saludable**: Galleta de avena + Americano ($5.00)
+- **Dulce**: Pastel de chocolate + Cappuccino ($6.50)
+- **Saludable**: Galleta de avena + Americano ($4.00)
 - **Refrescante**: Cheesecake + Iced Coffee ($8.50)
