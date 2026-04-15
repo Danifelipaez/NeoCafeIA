@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Selecto Granos | Asistente Digital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#7d6255",
+                    "on-primary-container": "#ffe3d1",
+                    "tertiary-fixed-dim": "#e1c0b0",
+                    "background": "#fff8f0",
+                    "on-tertiary-fixed-variant": "#594236",
+                    "on-background": "#1e1b14",
+                    "surface-tint": "#805533",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#f4bb92",
+                    "on-secondary-container": "#5c6856",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#1e1b14",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#d9e7d0",
+                    "secondary-container": "#d9e7d0",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#bdcbb5",
+                    "surface-container-highest": "#e9e2d5",
+                    "outline-variant": "#d5c3b8",
+                    "primary-fixed": "#ffdcc5",
+                    "on-secondary": "#ffffff",
+                    "surface": "#fff8f0",
+                    "on-primary-fixed": "#301400",
+                    "surface-dim": "#e1d9cc",
+                    "secondary": "#566250",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffe2d5",
+                    "on-tertiary-fixed": "#29170e",
+                    "on-surface-variant": "#51443c",
+                    "on-secondary-fixed-variant": "#3e4a39",
+                    "primary": "#6f4627",
+                    "surface-container": "#f5ede0",
+                    "primary-container": "#8b5e3c",
+                    "surface-variant": "#e9e2d5",
+                    "on-primary-fixed-variant": "#653d1e",
+                    "surface-bright": "#fff8f0",
+                    "tertiary": "#634a3e",
+                    "surface-container-low": "#fbf3e6",
+                    "surface-container-high": "#efe7da",
+                    "on-secondary-fixed": "#141e10",
+                    "inverse-primary": "#f4bb92",
+                    "inverse-surface": "#343027",
+                    "inverse-on-surface": "#f8f0e3",
+                    "tertiary-fixed": "#ffdbcb",
+                    "error-container": "#ffdad6",
+                    "outline": "#83746b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .font-serif { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-abstract-sand {
+            background-color: #fbf3e6;
+            clip-path: circle(40% at 90% 10%);
+        }
+        .bg-abstract-rose {
+            background-color: #ffdbcb;
+            opacity: 0.4;
+            clip-path: ellipse(25% 40% at 10% 80%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-auto">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-2xl">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
+<a href="/" class="text-xl font-serif italic text-[#6F4627] dark:text-[#D4A373] hover:opacity-80 transition-opacity">Selecto Granos</a>
+<div class="hidden md:flex gap-10 items-center">
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/#menu">Menu</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/">Curated Beans</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/">The Roastery</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium Manrope uppercase tracking-widest text-xs hover:text-[#6F4627] dark:hover:text-[#D4A373] transition-colors duration-300" href="/">Journal</a>
+</div>
+<a href="/" class="bg-primary text-on-primary px-8 py-2 rounded-full font-label uppercase tracking-widest text-xs active:scale-95 transition-transform hover:opacity-90">Inicio</a>
+</div>
+</nav>
+<!-- Abstract Geometric Accents -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute inset-0 bg-abstract-sand"></div>
+<div class="absolute inset-0 bg-abstract-rose"></div>
+<div class="absolute top-1/4 right-[-5%] w-64 h-64 bg-tertiary-fixed-dim/20 rounded-full blur-3xl"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-96">
+<div class="max-w-4xl mx-auto w-full px-8 relative">
+<!-- Header Text -->
+<header class="mb-10 mt-6">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-tertiary mb-2 block">Interacción Curada</span>
+<h1 class="font-headline text-4xl md:text-5xl text-primary leading-tight">Asistente de Ritual</h1>
+</header>
+<!-- Chat Container -->
+<div id="chat-container" class="space-y-6 pr-4" data-chat-container>
+<!-- Los mensajes se agregarán dinámicamente aquí -->
+</div>
+</div>
+</main>
+<!-- Footer with Input (Fixed) -->
+<footer class="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-background via-background/95 to-transparent pt-8 pb-8">
+<div class="max-w-4xl mx-auto w-full px-8">
+<!-- Suggestions -->
+<div class="flex flex-wrap gap-3 mb-6 justify-center">
+<button class="bg-surface-container-lowest px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-surface-container-low transition-all duration-300" data-suggestion="Recomiéndame un café">
+                        Recomiéndame un café
+                    </button>
+<button class="bg-surface-container-lowest px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-surface-container-low transition-all duration-300" data-suggestion="Ver el menú completo">
+                        Ver el menú
+                    </button>
+<button class="bg-surface-container-lowest px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider text-primary hover:bg-surface-container-low transition-all duration-300" data-suggestion="¿Cuál es tu horario de hoy?">
+                        Horarios de hoy
+                    </button>
+</div>
+<!-- Input Area -->
+<div class="relative group">
+<input id="chat-input" class="w-full bg-surface-container-lowest py-4 px-8 rounded-full focus:ring-2 focus:ring-primary/30 transition-all outline-none font-body text-on-surface placeholder:text-stone-400" placeholder="Escribe tu consulta aquí..." type="text"/>
+<button id="chat-send" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-primary text-on-primary rounded-full flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+</button>
+</div>
+</div>
+</footer>
+<!-- API Helper Infrastructure -->
+<script src="/static/stitch-ui/api-helper.js"></script>
+<!-- Chat Integration Script -->
+<script src="/static/stitch-ui/chat.js"></script>
+</body></html>

@@ -47,38 +47,60 @@ def health():
 
 @app.get("/", response_class=HTMLResponse)
 def landing():
-    """Servir landing page desde archivo estático"""
-    html_file = Path(__file__).parent / "static" / "landing.html"
+    """Servir landing page de Stitch (nuevo frontend)"""
+    html_file = Path(__file__).parent / "static" / "stitch-ui" / "landing.html"
     if html_file.exists():
         with open(html_file, 'r', encoding='utf-8') as f:
             return f.read()
-    return """
-    <!DOCTYPE html>
-    <html>
-    <body>
-    <h1>Error: Landing page not found</h1>
-    </body>
-    </html>
-    """
+    return "<h1>Landing page no encontrada</h1>"
 
 @app.get("/app", response_class=HTMLResponse)
 def chat_ui():
-    """Servir interfaz de chat desde archivo estático"""
-    html_file = Path(__file__).parent / "static" / "index.html"
+    """Servir interfaz de chat desktop de Stitch (nuevo frontend)"""
+    html_file = Path(__file__).parent / "static" / "stitch-ui" / "chat.html"
     if html_file.exists():
         with open(html_file, 'r', encoding='utf-8') as f:
             return f.read()
-    return """
-    <!DOCTYPE html>
-    <html>
-    <body>
-    <h1>Error: Chat UI not found</h1>
-    </body>
-    </html>
-    """
+    return "<h1>Chat interface no encontrada</h1>"
 
-@app.post("/chat", response_model=ChatResponse)
-def chat(request: ChatRequest):
+@app.get("/stitch-ui", response_class=HTMLResponse)
+def stitch_portal():
+    """Servir portal de Stitch UI"""
+    html_file = Path(__file__).parent / "static" / "stitch-ui" / "index.html"
+    if html_file.exists():
+        with open(html_file, 'r', encoding='utf-8') as f:
+            return f.read()
+    return "<h1>Portal no encontrado</h1>"
+
+@app.get("/stitch-ui/landing", response_class=HTMLResponse)
+def stitch_landing():
+    """Servir landing page de Stitch"""
+    html_file = Path(__file__).parent / "static" / "stitch-ui" / "landing.html"
+    if html_file.exists():
+        with open(html_file, 'r', encoding='utf-8') as f:
+            return f.read()
+    return "<h1>Landing page no encontrada</h1>"
+
+@app.get("/chat", response_class=HTMLResponse)
+def stitch_chat():
+    """Servir interfaz de chat desktop de Stitch"""
+    html_file = Path(__file__).parent / "static" / "stitch-ui" / "chat.html"
+    if html_file.exists():
+        with open(html_file, 'r', encoding='utf-8') as f:
+            return f.read()
+    return "<h1>Chat interface no encontrada</h1>"
+
+@app.get("/mobile/chat", response_class=HTMLResponse)
+def stitch_mobile_chat():
+    """Servir interfaz de chat mobile de Stitch"""
+    html_file = Path(__file__).parent / "static" / "stitch-ui" / "mobile-chat.html"
+    if html_file.exists():
+        with open(html_file, 'r', encoding='utf-8') as f:
+            return f.read()
+    return "<h1>Mobile chat interface no encontrada</h1>"
+
+@app.post("/api/chat", response_model=ChatResponse)
+def chat_api(request: ChatRequest):
     try:
         response = chat_service.respond(request)
         return response
@@ -88,3 +110,114 @@ def chat(request: ChatRequest):
     except Exception as e:
         logger.error(f"Error interno: {e}")
         raise HTTPException(status_code=500, detail="Error interno del servidor")
+
+
+# ============= NUEVOS ENDPOINTS DE API =============
+
+@app.get("/api/info")
+def get_project_info():
+    """Obtener información del proyecto"""
+    return {
+        "nombre": "Cafetería Selecto Granos",
+        "descripcion": "The Curated Ritual - Chat IA para recomendaciones de café",
+        "version": "1.0",
+        "providers": ["gemini", "openai", "claude", "deepseek"],
+        "url_stitch": "/stitch-ui"
+    }
+
+
+@app.get("/api/menu")
+def get_menu():
+    """Obtener menú completo"""
+    try:
+        menu_path = Path("knowledge/menu.md")
+        if menu_path.exists():
+            with open(menu_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            return {
+                "status": "ok",
+                "content": content,
+                "items": chat_service.menu_prices,
+                "combos": chat_service.combo_prices
+            }
+        return {"status": "error", "message": "Menú no encontrado", "items": {}, "combos": {}}
+    except Exception as e:
+        logger.error(f"Error al obtener menú: {e}")
+        raise HTTPException(status_code=500, detail="Error al obtener menú")
+
+
+@app.get("/api/recommendations")
+def get_recommendations(preference: str = None):
+    """Obtener recomendación personalizada"""
+    try:
+        # Opciones válidas: suave, fuerte, cremoso, refrescante, dulce
+        valid_preferences = ["suave", "fuerte", "cremoso", "refrescante", "dulce"]
+        
+        if preference and preference.lower() not in valid_preferences:
+            return {
+                "status": "error",
+                "message": f"Preferencia no válida. Opciones: {', '.join(valid_preferences)}"
+            }
+        
+        # Aquí se podría integrar lógica más compleja
+        recommendations = {
+            "suave": {
+                "titulo": "Cappuccino",
+                "descripcion": "Espuma cremosa y equilibrio perfecto.",
+                "precio": 3.50,
+                "origen": "Blend"
+            },
+            "fuerte": {
+                "titulo": "Espresso",
+                "descripcion": "Concentrado intenso y puro, para quienes buscan fuerza.",
+                "precio": 2.00,
+                "origen": "Colombia"
+            },
+            "cremoso": {
+                "titulo": "Latte",
+                "descripcion": "Suave, lácteo y sedoso, ideal para un momento de calma.",
+                "precio": 3.50,
+                "origen": "Blend"
+            },
+            "refrescante": {
+                "titulo": "Iced Coffee",
+                "descripcion": "Café frío con hielo, ligero y refrescante.",
+                "precio": 4.00,
+                "origen": "Blend Frío"
+            },
+            "dulce": {
+                "titulo": "Mocha",
+                "descripcion": "Chocolate y espresso en armónico equilibrio.",
+                "precio": 5.00,
+                "origen": "Chocolate"
+            }
+        }
+        
+        if preference:
+            return {
+                "status": "ok",
+                "recomendacion": recommendations.get(preference.lower(), recommendations["suave"])
+            }
+        
+        return {
+            "status": "ok",
+            "todas_recomendaciones": recommendations
+        }
+    except Exception as e:
+        logger.error(f"Error al obtener recomendaciones: {e}")
+        raise HTTPException(status_code=500, detail="Error al obtener recomendaciones")
+
+
+@app.get("/api/horarios")
+def get_hours():
+    """Obtener horarios de atención"""
+    return {
+        "caffeteria": "Cafetería Selecto Granos",
+        "horarios": {
+            "lunes_viernes": "7:00 AM - 8:00 PM",
+            "sabado": "8:00 AM - 9:00 PM",
+            "domingo": "Cerrado"
+        },
+        "telefono": "+1-555-CAFÉ",
+        "ubicacion": "The Curated Ritual District"
+    }

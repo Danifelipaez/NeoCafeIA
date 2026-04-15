@@ -1,21 +1,19 @@
 # Security Policy
 
-## Supported Versions
+## Alcance
+Este repositorio es un proyecto de ejemplo de asistente para cafetería. No dispone de versiones publicadas ni de soporte de seguridad por línea de producto.
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+## Reporte de Vulnerabilidades
+Si encuentras una vulnerabilidad, por favor reporta un issue en el repositorio o envía un correo a los mantenedores con la siguiente información:
+- Descripción clara del problema
+- Pasos para reproducirlo
+- Entorno donde se reproduce (Windows/macOS/Linux, Python, dependencias)
+- Archivos o rutas afectados
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+## Manejo de Datos Sensibles
+No se deben subir claves ni credenciales al repositorio. Usa el archivo `.env` local y mantenlo fuera de control de versiones. El repositorio incluye `.env.example` como plantilla.
 
-## Reporting a Vulnerability
-
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+## Estado Actual
+- No hay versiones de software publicadas en este proyecto.
+- La política se mantiene manualmente en este archivo.
+- En caso de incidente de seguridad, crea un issue y marca la etiqueta `security`.

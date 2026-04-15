@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Selecto Granos | The Curated Ritual</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#f4bb92",
+                        "secondary-container": "#d9e7d0",
+                        "surface-container-high": "#efe7da",
+                        "surface-container-highest": "#e9e2d5",
+                        "surface-dim": "#e1d9cc",
+                        "secondary": "#566250",
+                        "on-secondary-fixed": "#141e10",
+                        "on-primary-container": "#ffe3d1",
+                        "surface-variant": "#e9e2d5",
+                        "surface-container": "#f5ede0",
+                        "tertiary-container": "#7d6255",
+                        "secondary-fixed-dim": "#bdcbb5",
+                        "on-error": "#ffffff",
+                        "outline": "#83746b",
+                        "on-surface-variant": "#51443c",
+                        "primary-container": "#8b5e3c",
+                        "tertiary-fixed-dim": "#e1c0b0",
+                        "on-tertiary-container": "#ffe2d5",
+                        "on-background": "#1e1b14",
+                        "on-tertiary-fixed": "#29170e",
+                        "background": "#fff8f0",
+                        "surface": "#fff8f0",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdbcb",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f8f0e3",
+                        "on-tertiary-fixed-variant": "#594236",
+                        "surface-tint": "#805533",
+                        "on-secondary-container": "#5c6856",
+                        "inverse-surface": "#343027",
+                        "outline-variant": "#d5c3b8",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#6f4627",
+                        "surface-container-low": "#fbf3e6",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#653d1e",
+                        "on-primary-fixed": "#301400",
+                        "secondary-fixed": "#d9e7d0",
+                        "primary-fixed": "#ffdcc5",
+                        "on-secondary-fixed-variant": "#3e4a39",
+                        "inverse-primary": "#f4bb92",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fff8f0",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#634a3e",
+                        "on-surface": "#1e1b14"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #fff8f0; color: #1e1b14; }
+        .font-serif { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Header / TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/80 backdrop-blur-xl shadow-[0_0_40px_rgba(30,27,20,0.15)]">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
+<div class="text-xl font-serif italic text-[#6F4627]">Selecto Granos</div>
+<div class="hidden md:flex gap-12">
+<a class="text-[#6F4627] border-b border-[#6F4627]/20 pb-1 Manrope uppercase tracking-widest text-xs" href="#">Menu</a>
+<a class="text-stone-500 font-medium hover:text-[#6F4627] transition-colors duration-300 Manrope uppercase tracking-widest text-xs" href="#">Curated Beans</a>
+<a class="text-stone-500 font-medium hover:text-[#6F4627] transition-colors duration-300 Manrope uppercase tracking-widest text-xs" href="#">The Roastery</a>
+<a class="text-stone-500 font-medium hover:text-[#6F4627] transition-colors duration-300 Manrope uppercase tracking-widest text-xs" href="#">Journal</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label text-xs uppercase tracking-widest active:scale-95 transition-transform">Visit</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-surface-container">
+<!-- Abstract Geometry Accents -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary-container rounded-full opacity-60"></div>
+<div class="absolute bottom-20 -left-12 w-64 h-64 bg-tertiary-fixed rounded-full opacity-40"></div>
+<div class="max-w-7xl mx-auto px-8 w-full grid md:grid-cols-2 gap-16 items-center">
+<div class="z-10">
+<h1 class="text-6xl md:text-8xl font-serif leading-tight text-primary mb-8">
+                    Granos selectos.<br/>Experiencia única.
+                </h1>
+<p class="text-lg text-on-surface-variant font-body max-w-md mb-10 leading-relaxed">
+                    Elevando el ritual diario a través de una curaduría excepcional y tecnología de vanguardia. Descubre el sabor de la perfección.
+                </p>
+<button class="bg-[#8B5E3C] text-white px-10 py-4 rounded-full font-label uppercase tracking-widest text-sm hover:opacity-90 transition-opacity">
+                    Abrir Chat IA
+                </button>
+</div>
+<div class="relative hidden md:block h-[600px]">
+<!-- Asymmetric Layout Mockup with Abstract Shapes -->
+<div class="absolute inset-0 bg-surface-container-highest rounded-lg -rotate-3"></div>
+<div class="absolute inset-4 bg-surface-container-low rounded-lg shadow-sm flex items-center justify-center overflow-hidden">
+<div class="w-48 h-48 bg-primary rounded-full blur-3xl opacity-10"></div>
+<div class="w-64 h-64 border-[15px] border-outline-variant/10 rounded-full"></div>
+</div>
+<div class="absolute -bottom-8 -right-8 w-64 h-64 bg-secondary-fixed-dim rounded-full shadow-lg flex items-center justify-center p-12">
+<div class="w-full h-full border border-primary/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary scale-[2]">coffee</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Features Section -->
+<section class="py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid md:grid-cols-3 gap-16">
+<!-- Feature 1 -->
+<div class="space-y-6 group">
+<div class="w-12 h-12 flex items-center justify-center bg-secondary-container rounded-full text-secondary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="temp_preferences_custom">temp_preferences_custom</span>
+</div>
+<h3 class="text-xl font-serif text-primary">Granos de origen</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                        Seleccionamos meticulosamente cada finca, asegurando prácticas sostenibles y perfiles de sabor inigualables.
+                    </p>
+</div>
+<!-- Feature 2 -->
+<div class="space-y-6 group">
+<div class="w-12 h-12 flex items-center justify-center bg-primary-fixed rounded-text text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<h3 class="text-xl font-serif text-primary">Asistente IA</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                        Nuestra inteligencia artificial aprende tus gustos para recomendarte la mezcla exacta que tu paladar busca hoy.
+                    </p>
+</div>
+<!-- Feature 3 -->
+<div class="space-y-6 group">
+<div class="w-12 h-12 flex items-center justify-center bg-tertiary-fixed rounded-full text-tertiary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="card_membership">card_membership</span>
+</div>
+<h3 class="text-xl font-serif text-primary">Combos exclusivos</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                        Experiencias diseñadas para los verdaderos entusiastas, maridajes que transforman tu mañana.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Horizontal Menu Preview -->
+<section class="py-32 bg-surface-container-low overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 mb-16 flex justify-between items-end">
+<div>
+<span class="font-label text-xs uppercase tracking-widest text-secondary block mb-4">Nuestra Selección</span>
+<h2 class="text-4xl font-serif text-primary">El Ritual del Día</h2>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="p-2 border border-outline-variant/30 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">west</span>
+</button>
+<button class="p-2 border border-outline-variant/30 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">east</span>
+</button>
+</div>
+</div>
+<div class="flex overflow-x-auto gap-8 px-8 md:px-[calc((100vw-80rem)/2+2rem)] no-scrollbar snap-x snap-mandatory">
+<!-- Menu Cards -->
+<div class="min-w-[300px] md:min-w-[350px] snap-start">
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-[#C9A99A]/40 h-full transition-transform hover:-translate-y-2">
+<div class="aspect-square bg-secondary-container rounded-md mb-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary scale-[3]" data-icon="coffee_bean">coffee</span>
+</div>
+<h4 class="text-xl font-serif text-primary mb-2">Café Espresso</h4>
+<p class="text-on-surface-variant text-sm mb-6">Intenso, puro y lleno de carácter.</p>
+<div class="flex justify-between items-center">
+<span class="text-lg font-bold font-body">$2.00</span>
+<button class="bg-[#8B5E3C] text-white p-2 rounded-full"><span class="material-symbols-outlined">add</span></button>
+</div>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[350px] snap-start">
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-[#C9A99A]/40 h-full transition-transform hover:-translate-y-2">
+<div class="aspect-square bg-primary-fixed rounded-md mb-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary scale-[3]" data-icon="local_cafe">local_cafe</span>
+</div>
+<h4 class="text-xl font-serif text-primary mb-3">Café Americano</h4>
+<p class="text-on-surface-variant text-sm mb-8">Espresso diluido con agua caliente.</p>
+<div class="flex justify-between items-center">
+<span class="text-lg font-bold font-body">$2.50</span>
+<button class="bg-[#8B5E3C] text-white p-2 rounded-full"><span class="material-symbols-outlined">add</span></button>
+</div>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[350px] snap-start">
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-[#C9A99A]/40 h-full transition-transform hover:-translate-y-2">
+<div class="aspect-square bg-tertiary-fixed-dim rounded-md mb-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary scale-[3]" data-icon="cold_drink">local_drink</span>
+</div>
+<h4 class="text-xl font-serif text-primary mb-2">Cold Brew</h4>
+<p class="text-on-surface-variant text-sm mb-6">Infusión fría, baja acidez y frescura.</p>
+<div class="flex justify-between items-center">
+<span class="text-lg font-bold font-body">$4.50</span>
+<button class="bg-[#8B5E3C] text-white p-2 rounded-full"><span class="material-symbols-outlined">add</span></button>
+</div>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[350px] snap-start">
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-[#C9A99A]/40 h-full transition-transform hover:-translate-y-2">
+<div class="aspect-square bg-secondary-fixed rounded-md mb-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container scale-[3]" data-icon="bakery_dining">bakery_dining</span>
+</div>
+<h4 class="text-xl font-serif text-primary mb-2">Cappuccino</h4>
+<p class="text-on-surface-variant text-sm mb-6">Espuma cremosa y equilibrio perfecto.</p>
+<div class="flex justify-between items-center">
+<span class="text-lg font-bold font-body">$3.50</span>
+<button class="bg-[#8B5E3C] text-white p-2 rounded-full"><span class="material-symbols-outlined">add</span></button>
+</div>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[350px] snap-start">
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-[#C9A99A]/40 h-full transition-transform hover:-translate-y-2">
+<div class="aspect-square bg-surface-dim rounded-md mb-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant scale-[3]" data-icon="filter_vintage">filter_vintage</span>
+</div>
+<h4 class="text-xl font-serif text-primary mb-2">Latte</h4>
+<p class="text-on-surface-variant text-sm mb-6">Suave, lácteo y sedoso.</p>
+<div class="flex justify-between items-center">
+<span class="text-lg font-bold font-body">$3.50</span>
+<button class="bg-[#8B5E3C] text-white p-2 rounded-full"><span class="material-symbols-outlined">add</span></button>
+</div>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[350px] snap-start">
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-[#C9A99A]/40 h-full transition-transform hover:-translate-y-2">
+<div class="aspect-square bg-primary-container/20 rounded-md mb-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary scale-[3]" data-icon="award_star">award_star</span>
+</div>
+<h4 class="text-xl font-serif text-primary mb-2">Mocha</h4>
+<p class="text-on-surface-variant text-sm mb-6">Chocolate y espresso en armonía.</p>
+<div class="flex justify-between items-center">
+<span class="text-lg font-bold font-body">$5.00</span>
+<button class="bg-[#8B5E3C] text-white p-2 rounded-full"><span class="material-symbols-outlined">add</span></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section / Quote -->
+<section class="py-48 bg-surface relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[300px] absolute -top-10 -left-10" data-icon="format_quote">format_quote</span>
+</div>
+<div class="max-w-4xl mx-auto px-8 text-center relative z-10">
+<h2 class="text-3xl md:text-5xl font-serif italic text-primary leading-snug">
+                "En cada grano, una historia de origen y una caricia al alma."
+            </h2>
+<div class="mt-12 w-16 h-[1px] bg-outline-variant/30 mx-auto"></div>
+<p class="mt-8 font-label text-xs uppercase tracking-[0.3em] text-on-surface-variant">La Filosofía Selecto</p>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-stone-100 py-16 px-8 mt-24">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="space-y-4">
+<div class="font-serif text-lg text-[#6F4627]">Selecto Granos</div>
+<p class="font-sans text-sm tracking-tight text-stone-500">© 2024 Cafetería Selecto Granos. The Curated Ritual.</p>
+</div>
+<div class="flex flex-wrap gap-8">
+<div class="space-y-2">
+<span class="block font-label text-[10px] uppercase tracking-widest text-stone-400">Visítanos</span>
+<p class="text-sm text-stone-600 font-sans">Lun–Sáb 7am–8pm</p>
+</div>
+<div class="flex gap-6 items-center">
+<a class="text-stone-500 hover:text-[#6F4627] transition-colors text-sm font-sans underline decoration-[#6F4627]/30" href="#">Our Story</a>
+<a class="text-stone-500 hover:text-[#6F4627] transition-colors text-sm font-sans" href="#">Sustainability</a>
+<a class="text-stone-500 hover:text-[#6F4627] transition-colors text-sm font-sans" href="#">Contact</a>
+</div>
+</div>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center text-primary hover:bg-white transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center text-primary hover:bg-white transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>
