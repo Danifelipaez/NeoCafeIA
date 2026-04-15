@@ -9,6 +9,7 @@ class AIProvider(str, Enum):
     CLAUDE = "claude"
     DEEPSEEK = "deepseek"
     LANGCHAIN = "langchain"
+    REACT = "react"
 
 
 class Message(BaseModel):

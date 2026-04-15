@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  dir: ltr;
+  lang: es;
+}
+
+body {
+  @apply font-sans bg-gradient-to-br from-blue-50 to-blue-100 text-gray-800 leading-relaxed min-h-screen;
+}
+
+a {
+  @apply text-accent hover:text-accent-light transition-colors duration-300;
+}
+
+/* Gradientes personalizados */
+.gradient-primary {
+  @apply bg-gradient-to-r from-primary-dark via-primary to-primary-light;
+}
+
+.gradient-hero {
+  @apply bg-gradient-to-br from-primary-dark to-primary;
+}
+
+/* Botones */
+.btn-primary {
+  @apply bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded transition-colors duration-300;
+}
+
+.btn-secondary {
+  @apply bg-accent hover:bg-accent-light text-dark font-semibold py-2 px-4 rounded transition-colors duration-300;
+}
+
+/* Cards */
+.card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4;
+}

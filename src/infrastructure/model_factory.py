@@ -17,6 +17,7 @@ class AIModelFactory:
         from .claude_adapter import ClaudeAdapter
         from .deepseek_adapter import DeepSeekAdapter
         from .langchain_adapter import LangChainAdapter
+        from .react_adapter import ReactAdapter
 
         adapters = {
             AIProvider.GEMINI: GeminiAdapter,
@@ -24,6 +25,7 @@ class AIModelFactory:
             AIProvider.CLAUDE: ClaudeAdapter,
             AIProvider.DEEPSEEK: DeepSeekAdapter,
             AIProvider.LANGCHAIN: LangChainAdapter,
+            AIProvider.REACT: ReactAdapter,
         }
 
         adapter_class = adapters.get(provider)

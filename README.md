@@ -1,21 +1,30 @@
 # NeoCafeIA - Asistente de IA para Cafetería
 
-Chatbot inteligente para cafeterías con arquitectura hexagonal simplificada, FastAPI como backend y múltiples modelos de IA (Gemini, OpenAI, Claude, DeepSeek, LangChain).
+Chat inteligente para cafeterías con backend en FastAPI, frontend en Next.js 15, arquitectura hexagonal simplificada, y múltiples modelos de IA (Gemini, OpenAI, Claude, DeepSeek, LangChain, ReAct).
+
+## 🏗️ Arquitectura
+
+- **Backend:** FastAPI con adaptadores de IA y ciclo ReAct
+- **Frontend:** Next.js 15 con TypeScript y Tailwind CSS
+- **Base de Conocimiento:** Markdown en `/knowledge/`
+- **Orquestación:** MCP (Model Context Protocol) con tools de consulta
 
 ## 🚀 Inicio Rápido
 
-### Requisitos Previos
+### Backend (FastAPI)
+
+#### Requisitos Previos
 - Python 3.9 o superior
 - pip (gestor de paquetes de Python)
 
-### Instalación
+#### Instalación
 
 1. **Navega al directorio del proyecto:**
    ```bash
    cd NeoCafeIA
    ```
 
-2. **Crea un entorno virtual (opcional pero recomendado):**
+2. **Crea un entorno virtual:**
    ```bash
    python -m venv venv
    ```
@@ -35,19 +44,60 @@ Chatbot inteligente para cafeterías con arquitectura hexagonal simplificada, Fa
    pip install -r requirements.txt
    ```
 
-### Configuración
-
-1. **Crea un archivo `.env`** basado en el template:
+5. **Crea un archivo `.env`** basado en el template:
    ```bash
    cp .env.example .env
    ```
 
-2. **Edita el archivo `.env`** y añade tus API keys reales:
+6. **Edita el archivo `.env`** y añade tus API keys:
    ```bash
-   # Edita .env y reemplaza los valores de ejemplo con tus claves reales
    GOOGLE_API_KEY=tu_clave_real_de_google_gemini
    OPENAI_API_KEY=tu_clave_real_de_openai
-   # etc.
+   ANTHROPIC_API_KEY=tu_clave_real_de_claude
+   DEEPSEEK_API_KEY=tu_clave_real_de_deepseek
+   ```
+
+7. **Inicia el servidor:**
+   ```bash
+   uvicorn app:app --reload
+   ```
+
+### Frontend (Next.js 15)
+
+#### Requisitos Previos
+- Node.js 20+ (recomendado)
+- npm o yarn
+
+#### Instalación
+
+1. **Navega al directorio del frontend:**
+   ```bash
+   cd frontend
+   ```
+
+2. **Instala las dependencias:**
+   ```bash
+   npm install
+   # o
+   yarn install
+   ```
+
+3. **Crea archivo `.env.local`:**
+   ```bash
+   cp .env.example .env.local
+   ```
+
+4. **Inicia el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   # o
+   yarn dev
+   ```
+
+5. **Accede a:**
+   - Frontend: [http://localhost:3000](http://localhost:3000)
+   - Backend: [http://localhost:8000](http://localhost:8000)
+   - API Docs: [http://localhost:8000/docs](http://localhost:8000/docs)
    ```
 
    **⚠️ Importante:** Nunca subas el archivo `.env` al repositorio. Está incluido en `.gitignore` para mantener tus claves seguras.
