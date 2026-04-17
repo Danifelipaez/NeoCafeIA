@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="light" lang="es" dir="ltr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Selecto Granos | Checkout</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    primary: "#6f4627",
+                    "on-primary": "#ffffff",
+                    secondary: "#566250",
+                    "on-secondary": "#ffffff",
+                    background: "#fff8f0",
+                    "on-background": "#1e1b14",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#fbf3e6",
+                    "surface-container": "#f5ede0",
+                    "outline-variant": "#d5c3b8",
+                    "on-surface-variant": "#51443c"
+                },
+                borderRadius: {
+                    DEFAULT: "1rem",
+                    lg: "2rem",
+                    xl: "3rem",
+                    full: "9999px"
+                },
+                fontFamily: {
+                    headline: ["Noto Serif"],
+                    body: ["Manrope"],
+                    label: ["Manrope"]
+                }
+            }
+        }
+    };
+</script>
+<style>
+    body { font-family: 'Manrope', sans-serif; background: #fff8f0; color: #1e1b14; }
+    .font-serif { font-family: 'Noto Serif', serif; }
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    [role="button"]:focus-visible {
+        outline: 2px solid #6f4627;
+        outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+        .hover-rise { transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-rise:hover { transform: translateY(-2px); }
+    }
+</style>
+</head>
+<body class="min-h-screen bg-background text-on-background">
+<nav class="sticky top-0 z-30 bg-stone-50/85 backdrop-blur-2xl border-b border-outline-variant/60">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-serif italic text-primary">Selecto Granos</a>
+        <a href="/" class="bg-surface-container-lowest border border-outline-variant text-primary px-4 py-2 rounded-full font-label text-xs uppercase tracking-widest hover:bg-surface-container-low">Seguir comprando</a>
+    </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-5 md:px-8 py-8 md:py-12 grid lg:grid-cols-2 gap-8 md:gap-10">
+    <section class="space-y-5">
+        <div>
+            <p class="font-label text-[10px] uppercase tracking-[0.25em] text-secondary">Checkout</p>
+            <h1 class="font-headline text-4xl md:text-5xl text-primary">Confirma tu pedido</h1>
+        </div>
+
+        <article class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-5 md:p-6">
+            <h2 class="font-headline text-2xl text-primary mb-4">1. Resumen del pedido</h2>
+            <div id="checkout-items" class="space-y-3"></div>
+            <div class="mt-5 pt-4 border-t border-outline-variant/70 flex justify-between items-center">
+                <span class="text-on-surface-variant">Total</span>
+                <strong id="checkout-total" class="font-headline text-2xl text-primary">$0.00</strong>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <form id="checkout-form" class="space-y-5 bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-5 md:p-6">
+            <article class="space-y-4">
+                <h2 class="font-headline text-2xl text-primary">2. Información del cliente</h2>
+                <div>
+                    <label for="customer-name" class="block text-sm font-medium mb-2">Nombre</label>
+                    <input id="customer-name" name="customer_name" required type="text" class="w-full rounded-lg border-outline-variant bg-surface-container-low focus:border-primary focus:ring-primary" placeholder="Tu nombre"/>
+                </div>
+                <div>
+                    <label for="customer-phone" class="block text-sm font-medium mb-2">Teléfono (opcional)</label>
+                    <input id="customer-phone" name="phone" type="tel" class="w-full rounded-lg border-outline-variant bg-surface-container-low focus:border-primary focus:ring-primary" placeholder="+57 300 000 0000"/>
+                </div>
+                <div>
+                    <label for="customer-notes" class="block text-sm font-medium mb-2">Notas o solicitud especial</label>
+                    <textarea id="customer-notes" name="notes" rows="4" class="w-full rounded-lg border-outline-variant bg-surface-container-low focus:border-primary focus:ring-primary" placeholder="Sin azúcar, leche deslactosada, etc."></textarea>
+                </div>
+            </article>
+
+            <article class="space-y-3">
+                <h2 class="font-headline text-2xl text-primary">3. Método de pago</h2>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <label class="cursor-pointer">
+                        <input class="sr-only peer" type="radio" name="payment_method" value="Pagar en caja" checked/>
+                        <span class="block text-center px-4 py-3 rounded-full border border-outline-variant bg-surface-container-low peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary uppercase tracking-widest text-xs">Pagar en caja</span>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input class="sr-only peer" type="radio" name="payment_method" value="Transferencia"/>
+                        <span class="block text-center px-4 py-3 rounded-full border border-outline-variant bg-surface-container-low peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary uppercase tracking-widest text-xs">Transferencia</span>
+                    </label>
+                </div>
+            </article>
+
+            <p id="checkout-error" class="hidden text-sm text-red-700 bg-red-100 border border-red-200 rounded-lg px-3 py-2"></p>
+
+            <button id="confirm-order-btn" type="submit" class="hover-rise w-full bg-primary text-on-primary px-6 py-4 rounded-full font-label uppercase tracking-widest text-xs md:text-sm hover:opacity-90 active:scale-95">Confirmar pedido</button>
+        </form>
+    </section>
+</main>
+
+<script src="/static/stitch-ui/api-helper.js"></script>
+<script src="/static/stitch-ui/cart.js"></script>
+<script>
+function formatCurrency(value) {
+    return `$${Number(value).toFixed(2)}`;
+}
+
+function renderCheckoutSummary() {
+    const itemsEl = document.getElementById('checkout-items');
+    const totalEl = document.getElementById('checkout-total');
+    const items = window.cartManager?.items || [];
+
+    if (!items.length) {
+        itemsEl.innerHTML = '<p class="text-on-surface-variant">Tu carrito está vacío. <a href="/" class="text-primary underline">Volver al menú</a>.</p>';
+        totalEl.textContent = '$0.00';
+        return;
+    }
+
+    itemsEl.innerHTML = '';
+    items.forEach((item) => {
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between gap-4 bg-surface-container-low rounded-lg px-4 py-3';
+        row.innerHTML = `
+            <div>
+                <p class="font-medium">${item.name}</p>
+                <p class="text-xs uppercase tracking-widest text-on-surface-variant">${item.quantity} x ${formatCurrency(item.price)}</p>
+            </div>
+            <strong class="text-primary">${formatCurrency(item.price * item.quantity)}</strong>
+        `;
+        itemsEl.appendChild(row);
+    });
+
+    totalEl.textContent = formatCurrency(window.cartManager.getTotal());
+}
+
+async function handleCheckoutSubmit(event) {
+    event.preventDefault();
+
+    const errorEl = document.getElementById('checkout-error');
+    errorEl.classList.add('hidden');
+
+    const items = window.cartManager?.items || [];
+    if (!items.length) {
+        errorEl.textContent = 'El carrito está vacío. Agrega productos antes de confirmar.';
+        errorEl.classList.remove('hidden');
+        return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+    const customerName = String(formData.get('customer_name') || '').trim();
+    const phone = String(formData.get('phone') || '').trim();
+    const notes = String(formData.get('notes') || '').trim();
+    const paymentMethod = String(formData.get('payment_method') || 'Pagar en caja');
+
+    if (!customerName) {
+        errorEl.textContent = 'El nombre es obligatorio.';
+        errorEl.classList.remove('hidden');
+        return;
+    }
+
+    const payload = {
+        items: items.map((item) => ({
+            name: item.name,
+            price: Number(item.price),
+            quantity: Number(item.quantity)
+        })),
+        customer_name: customerName,
+        phone: phone || null,
+        notes: notes || null,
+        payment_method: paymentMethod,
+        total: Number(window.cartManager.getTotal().toFixed(2))
+    };
+
+    try {
+        const response = await window.api.createOrder(payload);
+        const orderSnapshot = {
+            order_id: response.order_id,
+            status: response.status,
+            items,
+            total: payload.total,
+            customer_name: payload.customer_name,
+            phone: payload.phone,
+            notes: payload.notes,
+            payment_method: payload.payment_method,
+            created_at: new Date().toISOString()
+        };
+
+        window.dataManager?.setValue('last_order', orderSnapshot);
+        window.cartManager.clear();
+
+        window.location.href = `/order-confirmation?order_id=${encodeURIComponent(response.order_id)}`;
+    } catch (error) {
+        errorEl.textContent = `No se pudo confirmar el pedido: ${error.message}`;
+        errorEl.classList.remove('hidden');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderCheckoutSummary();
+    document.getElementById('checkout-form')?.addEventListener('submit', handleCheckoutSubmit);
+    window.eventDispatcher?.on('cart-updated', renderCheckoutSummary);
+});
+</script>
+</body>
+</html>

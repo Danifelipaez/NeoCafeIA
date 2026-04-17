@@ -6,7 +6,7 @@ from pydantic import ValidationError
 import logging
 from pathlib import Path
 from dotenv import load_dotenv
-from src.domain.schemas import ChatRequest, ChatResponse
+from src.domain.schemas import ChatRequest, ChatResponse, OrderRequest
 from src.services.chat_service import ChatService
 from src.infrastructure.context_loader import ContextLoader
 
@@ -98,6 +98,27 @@ def stitch_mobile_chat():
         with open(html_file, 'r', encoding='utf-8') as f:
             return f.read()
     return "<h1>Mobile chat interface no encontrada</h1>"
+
+
+@app.get("/checkout", response_class=HTMLResponse)
+def checkout_page():
+    """Servir pantalla de checkout"""
+    html_file = Path(__file__).parent / "static" / "stitch-ui" / "checkout.html"
+    if html_file.exists():
+        with open(html_file, 'r', encoding='utf-8') as f:
+            return f.read()
+    return "<h1>Checkout no encontrado</h1>"
+
+
+@app.get("/order-confirmation", response_class=HTMLResponse)
+def order_confirmation_page():
+    """Servir pantalla de confirmación de pedido"""
+    html_file = Path(__file__).parent / "static" / "stitch-ui" / "order-confirmation.html"
+    if html_file.exists():
+        with open(html_file, 'r', encoding='utf-8') as f:
+            return f.read()
+    return "<h1>Confirmación no encontrada</h1>"
+
 
 @app.post("/api/chat", response_model=ChatResponse)
 def chat_api(request: ChatRequest):
@@ -221,3 +242,21 @@ def get_hours():
         "telefono": "+1-555-CAFÉ",
         "ubicacion": "The Curated Ritual District"
     }
+
+
+@app.post("/api/orders")
+def create_order(order: OrderRequest):
+    """Crear pedido sin persistencia (mock para checkout)"""
+    import random
+
+    order_id = str(random.randint(1000, 9999))
+    logger.info(
+        "Nuevo pedido %s | Cliente: %s | Método: %s | Total: %.2f | Items: %s",
+        order_id,
+        order.customer_name,
+        order.payment_method,
+        order.total,
+        [item.model_dump() for item in order.items],
+    )
+
+    return {"order_id": order_id, "status": "confirmed"}

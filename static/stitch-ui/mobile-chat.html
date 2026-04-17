@@ -1,159 +1,240 @@
 <!DOCTYPE html>
-
-<html class="light" lang="es"><head>
+<html class="light" lang="es" dir="ltr">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
 <title>Selecto Granos | Asistente Digital</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-tertiary": "#ffffff",
-                    "tertiary-container": "#7d6255",
-                    "on-primary-container": "#ffe3d1",
-                    "tertiary-fixed-dim": "#e1c0b0",
-                    "background": "#fff8f0",
-                    "on-tertiary-fixed-variant": "#594236",
-                    "on-background": "#1e1b14",
-                    "surface-tint": "#805533",
-                    "error": "#ba1a1a",
-                    "primary-fixed-dim": "#f4bb92",
-                    "on-secondary-container": "#5c6856",
-                    "on-error-container": "#93000a",
-                    "on-surface": "#1e1b14",
-                    "on-primary": "#ffffff",
-                    "secondary-fixed": "#d9e7d0",
-                    "secondary-container": "#d9e7d0",
-                    "on-error": "#ffffff",
-                    "secondary-fixed-dim": "#bdcbb5",
-                    "surface-container-highest": "#e9e2d5",
-                    "outline-variant": "#d5c3b8",
-                    "primary-fixed": "#ffdcc5",
-                    "on-secondary": "#ffffff",
-                    "surface": "#fff8f0",
-                    "on-primary-fixed": "#301400",
-                    "surface-dim": "#e1d9cc",
-                    "secondary": "#566250",
-                    "surface-container-lowest": "#ffffff",
-                    "on-tertiary-container": "#ffe2d5",
-                    "on-tertiary-fixed": "#29170e",
-                    "on-surface-variant": "#51443c",
-                    "on-secondary-fixed-variant": "#3e4a39",
-                    "primary": "#6f4627",
-                    "surface-container": "#f5ede0",
-                    "primary-container": "#8b5e3c",
-                    "surface-variant": "#e9e2d5",
-                    "on-primary-fixed-variant": "#653d1e",
-                    "surface-bright": "#fff8f0",
-                    "tertiary": "#634a3e",
-                    "surface-container-low": "#fbf3e6",
-                    "surface-container-high": "#efe7da",
-                    "on-secondary-fixed": "#141e10",
-                    "inverse-primary": "#f4bb92",
-                    "inverse-surface": "#343027",
-                    "inverse-on-surface": "#f8f0e3",
-                    "tertiary-fixed": "#ffdbcb",
-                    "error-container": "#ffdad6",
-                    "outline": "#83746b"
-            },
-            "borderRadius": {
-                    "DEFAULT": "1rem",
-                    "lg": "2rem",
-                    "xl": "3rem",
-                    "full": "9999px"
-            },
-            "fontFamily": {
-                    "headline": ["Noto Serif"],
-                    "body": ["Manrope"],
-                    "label": ["Manrope"]
-            }
-          },
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#6f4627",
+          "on-primary": "#ffffff",
+          secondary: "#566250",
+          "on-secondary": "#ffffff",
+          background: "#fff8f0",
+          "on-background": "#1e1b14",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-low": "#fbf3e6",
+          "surface-container": "#f5ede0",
+          "outline-variant": "#d5c3b8",
+          "on-surface-variant": "#51443c",
+          "secondary-container": "#d9e7d0",
+          "tertiary-fixed-dim": "#e1c0b0"
+        },
+        borderRadius: {
+          DEFAULT: "1rem",
+          lg: "2rem",
+          xl: "3rem",
+          full: "9999px"
+        },
+        fontFamily: {
+          headline: ["Noto Serif"],
+          body: ["Manrope"],
+          label: ["Manrope"]
         }
       }
-    </script>
+    }
+  }
+</script>
 <style>
-        body { font-family: 'Manrope', sans-serif; -webkit-tap-highlight-color: transparent; }
-        .font-serif { font-family: 'Noto Serif', serif; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-        }
-        .bg-abstract-sand {
-            background-color: #fbf3e6;
-            clip-path: circle(40% at 90% 10%);
-        }
-        .bg-abstract-rose {
-            background-color: #ffdbcb;
-            opacity: 0.4;
-            clip-path: ellipse(25% 40% at 10% 80%);
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 0px;
-            background: transparent;
-        }
-        .safe-area-bottom {
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-    </style>
+  body { font-family: 'Manrope', sans-serif; -webkit-tap-highlight-color: transparent; }
+  .font-serif { font-family: 'Noto Serif', serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  .bg-abstract-sand { background-color: #fbf3e6; clip-path: circle(40% at 90% 10%); }
+  .bg-abstract-rose { background-color: #ffdbcb; opacity: 0.4; clip-path: ellipse(25% 40% at 10% 80%); }
+  .custom-scrollbar::-webkit-scrollbar { width: 0px; background: transparent; }
+  .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid #6f4627;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    #mobile-cart-overlay { transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+    #mobile-cart-sheet { transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+  }
+</style>
 </head>
-<body class="bg-background text-on-background min-h-screen flex flex-col overflow-auto">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-stone-950/70 backdrop-blur-2xl">
-<div class="flex justify-between items-center w-full px-5 py-4 max-w-7xl mx-auto">
-<a href="/" class="text-lg font-serif italic text-primary hover:opacity-80">Selecto Granos</a>
-<a href="/" class="bg-primary text-on-primary px-5 py-1.5 rounded-full font-label uppercase tracking-widest text-[10px] active:scale-95 transition-transform hover:opacity-90">Visitar</a>
-</div>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-auto" dir="ltr">
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-stone-950/70 backdrop-blur-2xl border-b border-outline-variant/50">
+  <div class="flex justify-between items-center w-full px-5 py-4 max-w-7xl mx-auto">
+    <a href="/" class="text-lg font-serif italic text-primary hover:opacity-80">Selecto Granos</a>
+    <div class="flex items-center gap-2">
+      <button id="mobile-cart-open" type="button" aria-label="Abrir carrito" class="relative w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+        <span id="mobile-cart-badge" class="absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-secondary text-on-secondary text-[10px] font-bold flex items-center justify-center">0</span>
+      </button>
+      <a href="/" class="bg-primary text-on-primary px-5 py-1.5 rounded-full font-label uppercase tracking-widest text-[10px] active:scale-95 transition-transform hover:opacity-90">Visitar</a>
+    </div>
+  </div>
 </nav>
-<!-- Abstract Geometric Accents -->
+
 <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-<div class="absolute inset-0 bg-abstract-sand"></div>
-<div class="absolute inset-0 bg-abstract-rose"></div>
-<div class="absolute top-1/4 right-[-10%] w-48 h-48 bg-tertiary-fixed-dim/15 rounded-full blur-3xl"></div>
+  <div class="absolute inset-0 bg-abstract-sand"></div>
+  <div class="absolute inset-0 bg-abstract-rose"></div>
+  <div class="absolute top-1/4 right-[-10%] w-48 h-48 bg-tertiary-fixed-dim/15 rounded-full blur-3xl"></div>
 </div>
-<!-- Main Content Area -->
+
 <main class="pt-14 pb-80">
-<div class="max-w-4xl mx-auto w-full px-6 relative">
-<!-- Header Text -->
-<header class="mb-6 mt-4">
-<span class="font-label text-[9px] uppercase tracking-[0.2em] text-tertiary mb-2 block opacity-80">Interacción Curada</span>
-<h1 class="font-headline text-3xl text-primary leading-tight">Asistente de Ritual</h1>
-</header>
-<!-- Scrollable Chat History -->
-<div id="chat-container" class="space-y-5" data-chat-container>
-<!-- Los mensajes se cargarán dinámicamente aquí -->
-</div>
-</div>
+  <div class="max-w-4xl mx-auto w-full px-6 relative">
+    <header class="mb-6 mt-4">
+      <span class="font-label text-[9px] uppercase tracking-[0.2em] text-tertiary mb-2 block opacity-80">Interacción Curada</span>
+      <h1 class="font-headline text-3xl text-primary leading-tight">Asistente de Ritual</h1>
+    </header>
+    <div id="chat-container" class="space-y-5" data-chat-container></div>
+  </div>
 </main>
-<!-- Sticky Bottom Interaction Area (Footer) -->
+
 <footer class="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-background via-background/95 to-transparent pt-4 pb-6 safe-area-bottom">
-<div class="max-w-4xl mx-auto px-6 w-full">
-<!-- Horizontal Suggestion Chips -->
-<div class="flex gap-3 overflow-x-auto pb-3 -mx-6 px-6 no-scrollbar mb-4">
-<button class="flex-shrink-0 bg-surface-container-lowest px-5 py-2 rounded-full text-[9px] font-label uppercase tracking-wider text-primary whitespace-nowrap hover:bg-surface-container-low transition-all" data-suggestion="Recomiéndame un café">
-Recomiéndame un café
-</button>
-<button class="flex-shrink-0 bg-surface-container-lowest px-5 py-2 rounded-full text-[9px] font-label uppercase tracking-wider text-primary whitespace-nowrap hover:bg-surface-container-low transition-all" data-suggestion="Ver el menú completo">
-Ver el menú
-</button>
-<button class="flex-shrink-0 bg-surface-container-lowest px-5 py-2 rounded-full text-[9px] font-label uppercase tracking-wider text-primary whitespace-nowrap hover:bg-surface-container-low transition-all" data-suggestion="¿Cuál es tu horario?">
-Horarios
-</button>
-</div>
-<!-- Input Bar -->
-<div class="relative group">
-<input id="chat-input" class="w-full bg-surface-container-lowest py-3.5 px-6 pr-14 rounded-full focus:ring-2 focus:ring-primary/20 transition-all outline-none font-body text-sm text-on-surface placeholder:text-stone-400" placeholder="Tu consulta..." type="text"/>
-<button id="chat-send" class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-primary text-on-primary rounded-full flex items-center justify-center active:scale-90 transition-transform">
-<span class="material-symbols-outlined text-sm">arrow_upward</span>
-</button>
-</div>
-</div>
+  <div class="max-w-4xl mx-auto px-6 w-full">
+    <div class="flex gap-3 overflow-x-auto pb-3 -mx-6 px-6 no-scrollbar mb-4">
+      <button class="flex-shrink-0 bg-surface-container-lowest px-5 py-2 rounded-full text-[9px] font-label uppercase tracking-wider text-primary whitespace-nowrap hover:bg-surface-container-low transition-all" data-suggestion="Recomiéndame un café">Recomiéndame un café</button>
+      <button class="flex-shrink-0 bg-surface-container-lowest px-5 py-2 rounded-full text-[9px] font-label uppercase tracking-wider text-primary whitespace-nowrap hover:bg-surface-container-low transition-all" data-suggestion="Ver el menú completo">Ver el menú</button>
+      <button class="flex-shrink-0 bg-surface-container-lowest px-5 py-2 rounded-full text-[9px] font-label uppercase tracking-wider text-primary whitespace-nowrap hover:bg-surface-container-low transition-all" data-suggestion="¿Cuál es tu horario?">Horarios</button>
+    </div>
+    <div class="relative group">
+      <input id="chat-input" lang="es" dir="ltr" class="w-full bg-surface-container-lowest py-3.5 px-6 pr-14 rounded-full focus:ring-2 focus:ring-primary/20 transition-all outline-none font-body text-sm text-on-surface placeholder:text-stone-400" placeholder="Tu consulta..." type="text"/>
+      <button id="chat-send" class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-primary text-on-primary rounded-full flex items-center justify-center active:scale-90 transition-transform" aria-label="Enviar mensaje">
+        <span class="material-symbols-outlined text-sm">arrow_upward</span>
+      </button>
+    </div>
+  </div>
 </footer>
-<!-- API Helper Infrastructure -->
+
+<div id="mobile-cart-overlay" class="fixed inset-0 bg-black/35 opacity-0 pointer-events-none z-[70]"></div>
+<aside id="mobile-cart-sheet" class="fixed left-0 right-0 bottom-0 h-[70vh] bg-surface-container-lowest rounded-t-3xl border-t border-outline-variant z-[80] translate-y-full">
+  <div class="h-full flex flex-col">
+    <header class="px-5 py-4 border-b border-outline-variant/70 flex items-center justify-between">
+      <div>
+        <p class="font-label text-[9px] uppercase tracking-[0.25em] text-secondary">Pedido</p>
+        <h2 class="font-headline text-2xl text-primary">Tu carrito</h2>
+      </div>
+      <button id="mobile-cart-close" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center" aria-label="Cerrar carrito">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </header>
+
+    <div id="mobile-cart-empty" class="hidden flex-1 flex flex-col items-center justify-center text-center px-6">
+      <span class="material-symbols-outlined text-5xl text-secondary mb-3">shopping_cart</span>
+      <p class="font-headline text-2xl text-primary mb-2">Tu carrito está vacío ☕</p>
+      <p class="text-on-surface-variant text-sm">Agrega productos desde el menú para continuar.</p>
+    </div>
+
+    <div id="mobile-cart-items" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+
+    <footer class="border-t border-outline-variant/70 p-5 space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-on-surface-variant">Total</span>
+        <strong id="mobile-cart-total" class="font-headline text-2xl text-primary">$0.00</strong>
+      </div>
+      <a href="/checkout" class="w-full inline-flex justify-center bg-primary text-on-primary py-3 rounded-full font-label uppercase tracking-widest text-xs">Ir al Checkout</a>
+    </footer>
+  </div>
+</aside>
+
 <script src="/static/stitch-ui/api-helper.js"></script>
-<!-- Chat Integration Script -->
+<script src="/static/stitch-ui/cart.js"></script>
 <script src="/static/stitch-ui/chat.js"></script>
-</body></html>
+<script>
+function formatCurrency(value) {
+  return `$${Number(value).toFixed(2)}`;
+}
+
+function updateMobileBadge() {
+  const badge = document.getElementById('mobile-cart-badge');
+  if (!badge || !window.cartManager) return;
+  badge.textContent = String(window.cartManager.getCount());
+}
+
+function renderMobileCart() {
+  const itemsHost = document.getElementById('mobile-cart-items');
+  const empty = document.getElementById('mobile-cart-empty');
+  const total = document.getElementById('mobile-cart-total');
+  if (!itemsHost || !empty || !total || !window.cartManager) return;
+
+  const items = window.cartManager.items;
+  total.textContent = formatCurrency(window.cartManager.getTotal());
+
+  if (!items.length) {
+    itemsHost.innerHTML = '';
+    empty.classList.remove('hidden');
+    return;
+  }
+
+  empty.classList.add('hidden');
+  itemsHost.innerHTML = '';
+
+  items.forEach((item) => {
+    const row = document.createElement('article');
+    row.className = 'bg-surface-container-low rounded-xl p-4 border border-outline-variant/40';
+    row.innerHTML = `
+      <div class="flex justify-between mb-2">
+        <p class="font-medium">${item.name}</p>
+        <strong class="text-primary">${formatCurrency(item.price * item.quantity)}</strong>
+      </div>
+      <div class="flex items-center justify-between">
+        <p class="text-xs uppercase tracking-widest text-on-surface-variant">${formatCurrency(item.price)} c/u</p>
+        <div class="inline-flex items-center gap-2">
+          <button aria-label="Disminuir ${item.name}" class="cart-mobile-qty w-7 h-7 rounded-full bg-surface-container hover:bg-surface-container-low active:scale-95" data-id="${item.id}" data-action="minus">-</button>
+          <span class="min-w-5 text-center text-sm">${item.quantity}</span>
+          <button aria-label="Aumentar ${item.name}" class="cart-mobile-qty w-7 h-7 rounded-full bg-surface-container hover:bg-surface-container-low active:scale-95" data-id="${item.id}" data-action="plus">+</button>
+        </div>
+      </div>
+    `;
+    itemsHost.appendChild(row);
+  });
+
+  itemsHost.querySelectorAll('.cart-mobile-qty').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const current = window.cartManager.items.find((item) => item.id === id);
+      if (!current) return;
+      if (btn.dataset.action === 'minus') window.cartManager.updateQuantity(id, current.quantity - 1);
+      if (btn.dataset.action === 'plus') window.cartManager.updateQuantity(id, current.quantity + 1);
+    });
+  });
+}
+
+function openMobileCart() {
+  document.getElementById('mobile-cart-overlay')?.classList.remove('opacity-0', 'pointer-events-none');
+  const sheet = document.getElementById('mobile-cart-sheet');
+  sheet?.classList.remove('translate-y-full');
+  sheet?.classList.add('translate-y-0');
+}
+
+function closeMobileCart() {
+  document.getElementById('mobile-cart-overlay')?.classList.add('opacity-0', 'pointer-events-none');
+  const sheet = document.getElementById('mobile-cart-sheet');
+  sheet?.classList.add('translate-y-full');
+  sheet?.classList.remove('translate-y-0');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('mobile-cart-open')?.addEventListener('click', openMobileCart);
+  document.getElementById('mobile-cart-close')?.addEventListener('click', closeMobileCart);
+  document.getElementById('mobile-cart-overlay')?.addEventListener('click', closeMobileCart);
+
+  updateMobileBadge();
+  renderMobileCart();
+
+  window.eventDispatcher?.on('cart-updated', () => {
+    updateMobileBadge();
+    renderMobileCart();
+  });
+  window.eventDispatcher?.on('cart-cleared', () => {
+    updateMobileBadge();
+    renderMobileCart();
+  });
+});
+</script>
+</body>
+</html>

@@ -9,9 +9,6 @@ class APIHelper {
         };
     }
 
-    /**
-     * Enviar pregunta al chat
-     */
     async sendChatMessage(pregunta, provider = 'gemini', historial = []) {
         try {
             const response = await fetch(`${this.baseURL}/chat`, {
@@ -34,9 +31,6 @@ class APIHelper {
         }
     }
 
-    /**
-     * Obtener estado del servidor
-     */
     async healthCheck() {
         try {
             const response = await fetch('/health');
@@ -46,9 +40,6 @@ class APIHelper {
         }
     }
 
-    /**
-     * Obtener información del proyecto
-     */
     async getProjectInfo() {
         try {
             const response = await fetch(`${this.baseURL}/info`);
@@ -61,9 +52,6 @@ class APIHelper {
         }
     }
 
-    /**
-     * Obtener menú completo
-     */
     async getMenu() {
         try {
             const response = await fetch(`${this.baseURL}/menu`);
@@ -76,15 +64,12 @@ class APIHelper {
         }
     }
 
-    /**
-     * Obtener recomendaciones personalizadas
-     */
     async getRecommendations(preference = null) {
         try {
-            const url = preference 
-                ? `${this.baseURL}/recommendations?preference=${preference}`
+            const url = preference
+                ? `${this.baseURL}/recommendations?preference=${encodeURIComponent(preference)}`
                 : `${this.baseURL}/recommendations`;
-            
+
             const response = await fetch(url);
             if (response.ok) {
                 return await response.json();
@@ -95,9 +80,6 @@ class APIHelper {
         }
     }
 
-    /**
-     * Obtener horarios de atención
-     */
     async getHours() {
         try {
             const response = await fetch(`${this.baseURL}/horarios`);
@@ -110,6 +92,25 @@ class APIHelper {
         }
     }
 
+    async createOrder(orderPayload) {
+        try {
+            const response = await fetch(`${this.baseURL}/orders`, {
+                method: 'POST',
+                headers: this.defaultHeaders,
+                body: JSON.stringify(orderPayload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            return await response.json();
+        } catch (error) {
+            throw new Error(`Error al crear pedido: ${error.message}`);
+        }
+    }
+}
+
 /**
  * Data Manager - Gestiona almacenamiento local de datos
  */
@@ -118,9 +119,6 @@ class DataManager {
         this.storageKey = storageKey;
     }
 
-    /**
-     * Guardar historial de chat
-     */
     saveChatHistory(messages) {
         try {
             localStorage.setItem(`${this.storageKey}_history`, JSON.stringify(messages));
@@ -129,9 +127,6 @@ class DataManager {
         }
     }
 
-    /**
-     * Cargar historial de chat
-     */
     loadChatHistory() {
         try {
             const saved = localStorage.getItem(`${this.storageKey}_history`);
@@ -142,9 +137,6 @@ class DataManager {
         }
     }
 
-    /**
-     * Guardar preferencias del usuario
-     */
     savePreferences(preferences) {
         try {
             localStorage.setItem(`${this.storageKey}_prefs`, JSON.stringify(preferences));
@@ -153,9 +145,6 @@ class DataManager {
         }
     }
 
-    /**
-     * Cargar preferencias del usuario
-     */
     loadPreferences() {
         try {
             const saved = localStorage.getItem(`${this.storageKey}_prefs`);
@@ -166,13 +155,38 @@ class DataManager {
         }
     }
 
-    /**
-     * Limpiar todos los datos
-     */
+    setValue(key, value) {
+        try {
+            localStorage.setItem(`${this.storageKey}_${key}`, JSON.stringify(value));
+        } catch (e) {
+            console.warn(`No se pudo guardar ${key}:`, e);
+        }
+    }
+
+    getValue(key, fallback = null) {
+        try {
+            const raw = localStorage.getItem(`${this.storageKey}_${key}`);
+            return raw ? JSON.parse(raw) : fallback;
+        } catch (e) {
+            console.warn(`No se pudo cargar ${key}:`, e);
+            return fallback;
+        }
+    }
+
+    removeValue(key) {
+        try {
+            localStorage.removeItem(`${this.storageKey}_${key}`);
+        } catch (e) {
+            console.warn(`No se pudo eliminar ${key}:`, e);
+        }
+    }
+
     clearAll() {
         try {
             localStorage.removeItem(`${this.storageKey}_history`);
             localStorage.removeItem(`${this.storageKey}_prefs`);
+            localStorage.removeItem('neocafeIA_cart');
+            localStorage.removeItem(`${this.storageKey}_last_order`);
         } catch (e) {
             console.warn('No se pudo limpiar datos:', e);
         }
@@ -187,9 +201,6 @@ class EventDispatcher {
         this.listeners = {};
     }
 
-    /**
-     * Suscribirse a evento
-     */
     on(event, callback) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
@@ -197,26 +208,19 @@ class EventDispatcher {
         this.listeners[event].push(callback);
     }
 
-    /**
-     * Desuscribirse de evento
-     */
     off(event, callback) {
         if (this.listeners[event]) {
-            this.listeners[event] = this.listeners[event].filter(cb => cb !== callback);
+            this.listeners[event] = this.listeners[event].filter((cb) => cb !== callback);
         }
     }
 
-    /**
-     * Emit evento
-     */
     emit(event, data) {
         if (this.listeners[event]) {
-            this.listeners[event].forEach(callback => callback(data));
+            this.listeners[event].forEach((callback) => callback(data));
         }
     }
 }
 
-// Instancias globales
 window.api = new APIHelper();
 window.dataManager = new DataManager();
 window.eventDispatcher = new EventDispatcher();

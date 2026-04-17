@@ -27,3 +27,18 @@ class ChatResponse(BaseModel):
     respuesta: str
     provider: AIProvider
     tokens_usados: Optional[int] = None
+
+
+class OrderItem(BaseModel):
+    name: str
+    price: float
+    quantity: int
+
+
+class OrderRequest(BaseModel):
+    items: List[OrderItem]
+    customer_name: str
+    phone: Optional[str] = None
+    notes: Optional[str] = None
+    payment_method: str
+    total: float
