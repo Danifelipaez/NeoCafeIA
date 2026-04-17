@@ -391,7 +391,7 @@ function openCart() {
     const drawer = document.getElementById('cart-drawer');
     if (!overlay || !drawer) return;
     overlay.classList.remove('opacity-0', 'pointer-events-none');
-    if (window.matchMedia('(max-width: 768px)').matches) {
+    if (window.matchMedia('(max-width: 767px)').matches) {
         drawer.classList.remove('max-md:translate-y-full');
         drawer.classList.add('max-md:translate-y-0');
     } else {
@@ -405,7 +405,7 @@ function closeCart() {
     const drawer = document.getElementById('cart-drawer');
     if (!overlay || !drawer) return;
     overlay.classList.add('opacity-0', 'pointer-events-none');
-    if (window.matchMedia('(max-width: 768px)').matches) {
+    if (window.matchMedia('(max-width: 767px)').matches) {
         drawer.classList.add('max-md:translate-y-full');
         drawer.classList.remove('max-md:translate-y-0');
     } else {
