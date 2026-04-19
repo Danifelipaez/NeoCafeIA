@@ -6,9 +6,11 @@ Integra el ReActAgent con el sistema de adaptadores existente.
 
 from typing import List, Optional, Tuple
 import logging
+import os
 
 from src.domain.schemas import Message
 from src.infrastructure.model_factory import IModelAdapter
+from src.infrastructure.mcp_client import MCPClient
 from src.services.react_agent import ReActAgent, MockToolInvoker
 
 
@@ -30,7 +32,18 @@ class ReactAdapter(IModelAdapter):
             max_iterations: Máximo número de iteraciones en el ciclo ReAct
         """
         self.max_iterations = max_iterations
-        self.tool_invoker = MockToolInvoker()  # Usar mock para ahora
+
+        mcp_url = os.getenv("MCP_URL", "").strip()
+        if mcp_url:
+            self.tool_invoker = MCPClient(base_url=mcp_url)
+            logger.info(
+                "[ReactAdapter] MCPClient activo con URL pública: %s",
+                mcp_url,
+            )
+        else:
+            self.tool_invoker = MockToolInvoker()
+            logger.info("[ReactAdapter] MCP_URL no configurado, usando mock")
+
         logger.info(
             f"[ReactAdapter] Inicializado con {max_iterations} iteraciones máximas"
         )
